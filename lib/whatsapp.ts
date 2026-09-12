@@ -1,0 +1,65 @@
+/**
+ * Utilidades para generar mensajes de WhatsApp
+ */
+
+import { CartItem } from "@/lib/types/product";
+import { config } from "@/lib/config";
+
+/**
+ * Generar mensaje de WhatsApp formateado
+ */
+export function generateWhatsAppMessage(items: CartItem[]): string {
+  if (items.length === 0) {
+    return "Hola, me gustaría consultar sobre productos.";
+  }
+
+  let message = "🛍️ *Consulta de Productos*\n\n";
+  message += "Productos de interés:\n";
+
+  let total = 0;
+
+  items.forEach((item, index) => {
+    const subtotal = item.product.price * item.quantity;
+    total += subtotal;
+
+    message += `${index + 1}. *${item.product.name}*\n`;
+    message += `   SKU: ${item.product.sku}\n`;
+    message += `   Cantidad: ${item.quantity}\n`;
+    message += `   Precio unitario: $${item.product.price.toFixed(2)}\n`;
+    message += `   Subtotal: $${subtotal.toFixed(2)}\n\n`;
+  });
+
+  message += `*Total: $${total.toFixed(2)}*\n\n`;
+  message += "Favor confirmar disponibilidad y hacer presupuesto.";
+
+  return message;
+}
+
+/**
+ * Generar URL de WhatsApp con mensaje
+ */
+export function generateWhatsAppUrl(message: string): string {
+  const phoneNumber = config.company.whatsappNumber;
+  const encodedMessage = encodeURIComponent(message);
+  return `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+}
+
+/**
+ * Generar URL y abrir WhatsApp en una nueva ventana
+ */
+export function openWhatsApp(message: string): void {
+  const url = generateWhatsAppUrl(message);
+  window.open(url, "_blank");
+}
+
+/**
+ * Generar mensaje simple para un producto único
+ */
+export function generateSingleProductMessage(
+  productName: string,
+  sku: string,
+  price: number,
+  quantity: number
+): string {
+  return `Hola, me interesa el producto "${productName}" (SKU: ${sku}). Cantidad: ${quantity}. Precio unitario: $${price.toFixed(2)}. Total: $${(price * quantity).toFixed(2)}`;
+}
