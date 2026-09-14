@@ -1,7 +1,7 @@
 "use client";
 
 import { Product } from "@/lib/types/product";
-import { useCart } from "@/app/context/CartContext";
+import { useCart } from "@/context/CartContext";
 import { generateSingleProductMessage, openWhatsApp } from "@/lib/whatsapp";
 
 interface WhatsAppButtonProps {

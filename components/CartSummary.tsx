@@ -40,7 +40,7 @@ export function CartSummary({
         <h3 className="text-lg font-bold text-gray-900 mb-2">Carrito vacío</h3>
         <p className="text-gray-600 mb-6">No tienes productos seleccionados</p>
         <Link
-          href="/products"
+          href="/productos"
           className="inline-block px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
         >
           Ir al Catálogo
@@ -56,18 +56,18 @@ export function CartSummary({
         {items.map((item) => (
           <div key={item.product.id} className="p-4 flex gap-4">
             {/* Imagen */}
-            <div className="w-20 h-20 flex-shrink-0 rounded bg-gray-200 overflow-hidden">
+            <div className="w-20 h-20 flex-shrink-0 rounded bg-white overflow-hidden">
               <img
                 src={item.product.image}
                 alt={item.product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain p-1"
               />
             </div>
 
             {/* Información */}
             <div className="flex-grow">
               <Link
-                href={`/products/${item.product.id}`}
+                href={`/productos/${item.product.id}`}
                 className="font-bold text-gray-900 hover:text-blue-600"
               >
                 {item.product.name}

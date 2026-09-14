@@ -1,60 +1,100 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { products, getCategories } from "@/lib/data/products";
-import { ProductCard } from "@/app/components/ProductCard";
-import { SearchBar } from "@/app/components/SearchBar";
-import { FilterPanel } from "@/app/components/FilterPanel";
-import { applyFilters } from "@/lib/filters";
-import { Filter } from "@/lib/types/product";
+import Link from "next/link";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { getProducts, filterProducts, getAllCategories, getAllBrands } from "@/lib/products/product-service";
+import { ProductCard } from "@/components/ProductCard";
+import { SearchBar } from "@/components/SearchBar";
+import { FilterPanel } from "@/components/FilterPanel";
+import type { ProductBrand, ProductCategory, ProductFilters } from "@/lib/types/product";
 
 export default function ProductsPage() {
-  const categories = getCategories();
-  const [filters, setFilters] = useState<Filter>({
+  const searchParams = useSearchParams();
+  const categories = getAllCategories();
+  const brands = getAllBrands();
+  const quickCategoryLinks = [
+    { id: "calderas", label: "Calderas" },
+    { id: "calderas_restauradas", label: "Calderas restauradas" },
+    { id: "repuestos_genericos", label: "Repuestos" },
+    { id: "termostatos", label: "Termostatos" },
+    { id: "radiadores", label: "Radiadores" },
+    { id: "ventilacion", label: "Ventilación" },
+    { id: "accesorios", label: "Accesorios" },
+  ];
+  const [filters, setFilters] = useState<ProductFilters>({
     search: "",
-    category: "",
-    minPrice: undefined,
-    maxPrice: undefined,
-    availability: false,
+    category: undefined,
+    brand: undefined,
   });
 
-  // Filtrar productos basado en los filtros activos
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    const brandParam = searchParams.get("brand");
+    const searchParam = searchParams.get("search");
+
+    setFilters((prev) => ({
+      ...prev,
+      category: (categoryParam || undefined) as ProductCategory | undefined,
+      brand: (brandParam || undefined) as ProductBrand | undefined,
+      search: searchParam || undefined,
+    }));
+  }, [searchParams]);
+
   const filteredProducts = useMemo(() => {
-    return applyFilters(products, filters);
+    return filterProducts(filters);
   }, [filters]);
 
   const handleSearch = (searchTerm: string) => {
-    setFilters((prev) => ({ ...prev, search: searchTerm }));
+    setFilters((prev) => ({ ...prev, search: searchTerm || undefined }));
   };
 
   const handleCategoryChange = (category: string) => {
-    setFilters((prev) => ({ ...prev, category }));
+    setFilters((prev) => ({
+      ...prev,
+      category: (category || undefined) as ProductCategory | undefined,
+    }));
   };
 
-  const handlePriceChange = (minPrice?: number, maxPrice?: number) => {
-    setFilters((prev) => ({ ...prev, minPrice, maxPrice }));
+  const handleBrandChange = (brand: string) => {
+    setFilters((prev) => ({
+      ...prev,
+      brand: (brand || undefined) as ProductBrand | undefined,
+    }));
   };
 
-  const handleAvailabilityChange = (availableOnly: boolean) => {
-    setFilters((prev) => ({ ...prev, availability: availableOnly }));
-  };
-
-  const hasActiveFilters =
-    filters.search ||
-    filters.category ||
-    filters.minPrice !== undefined ||
-    filters.maxPrice !== undefined ||
-    filters.availability;
+  const hasActiveFilters = !!(filters.search || filters.category || filters.brand);
 
   return (
     <div>
       {/* Encabezado */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 px-4">
+      <section className="bg-gradient-to from-slate-900 via-slate-800 to-blue-900 text-white py-12 px-4">
         <div className="max-w-7xl mx-auto">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">
+            Catálogo
+          </p>
           <h1 className="text-4xl font-bold mb-2">Nuestro Catálogo</h1>
           <p className="text-blue-100">
-            Explora nuestros productos y selecciona los que te interesan
+            Explora por familia de productos y encontrá la solución que necesitás.
           </p>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-200 bg-white px-4 py-4">
+        <div className="mx-auto flex max-w-7xl flex-wrap gap-2">
+          {quickCategoryLinks.map((item) => (
+            <Link
+              key={item.id}
+              href={`/productos?category=${encodeURIComponent(item.id)}`}
+              className={`rounded-full border px-3 py-2 text-sm font-medium transition ${
+                filters.category === item.id
+                  ? "border-blue-600 bg-blue-600 text-white"
+                  : "border-slate-200 bg-slate-50 text-slate-700 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -72,15 +112,11 @@ export default function ProductsPage() {
             <div className="md:col-span-1">
               <FilterPanel
                 categories={categories}
+                brands={brands}
                 onCategoryChange={handleCategoryChange}
-                onPriceChange={handlePriceChange}
-                onAvailabilityChange={handleAvailabilityChange}
+                onBrandChange={handleBrandChange}
                 selectedCategory={filters.category}
-                selectedPriceRange={{
-                  min: filters.minPrice,
-                  max: filters.maxPrice,
-                }}
-                showAvailabilityOnly={filters.availability}
+                selectedBrand={filters.brand}
               />
             </div>
 
@@ -97,7 +133,7 @@ export default function ProductsPage() {
                     {hasActiveFilters && (
                       <>
                         <span className="font-medium">
-                          {filteredProducts.length} de {products.length}
+                          {filteredProducts.length} de {getProducts().length}
                         </span>{" "}
                         productos coinciden con tus filtros
                       </>
@@ -140,11 +176,9 @@ export default function ProductsPage() {
                   <button
                     onClick={() => {
                       setFilters({
-                        search: "",
-                        category: "",
-                        minPrice: undefined,
-                        maxPrice: undefined,
-                        availability: false,
+                        search: undefined,
+                        category: undefined,
+                        brand: undefined,
                       });
                     }}
                     className="inline-block px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"

@@ -30,19 +30,24 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:text-white transition">
+                <Link href="/productos" className="hover:text-white transition">
                   Productos
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
-                  Sobre Nosotros
-                </a>
+                <Link href="/donde-comprar" className="hover:text-white transition">
+                  Dónde Comprar
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition">
-                  Política de Privacidad
-                </a>
+                <Link href="/service" className="hover:text-white transition">
+                  Service
+                </Link>
+              </li>
+              <li>
+                <Link href="/capacitacion" className="hover:text-white transition">
+                  Capacitación
+                </Link>
               </li>
             </ul>
           </div>
@@ -54,7 +59,7 @@ export function Footer() {
               {config.filters.categories.slice(0, 4).map((category) => (
                 <li key={category}>
                   <Link
-                    href={`/products?category=${category}`}
+                    href={`/productos?category=${category}`}
                     className="hover:text-white transition"
                   >
                     {category}

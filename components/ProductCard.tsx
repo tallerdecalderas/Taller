@@ -8,15 +8,15 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Link href={`/products/${product.id}`}>
+    <Link href={`/productos/${product.id}`}>
       <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer h-full flex flex-col">
         {/* Imagen del producto */}
-        <div className="relative w-full h-48 bg-gray-200 overflow-hidden">
+        <div className="relative w-full h-48 bg-white overflow-hidden">
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover hover:scale-105 transition-transform duration-300"
+            className="object-contain p-3 hover:scale-[1.02] transition-transform duration-300"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={false}
           />

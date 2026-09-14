@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Product } from "@/lib/types/product";
 import { QuantitySelector } from "./QuantitySelector";
 import { config } from "@/lib/config";
+import { useCart } from "@/context/CartContext";
 
 interface ProductDetailProps {
   product: Product;
@@ -12,6 +13,18 @@ interface ProductDetailProps {
 
 export function ProductDetail({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1);
+  const { addItem } = useCart();
+
+  const handleAddToCart = () => {
+    if (!product.available) {
+      return;
+    }
+
+    addItem(product, quantity);
+    window.alert(
+      `✅ ${product.name} se agregó a tu consulta.\n\nPodés revisarla en "Mi Consulta" y enviarla por WhatsApp.`
+    );
+  };
 
   const handleWhatsAppClick = () => {
     const message = `Hola, me interesa el producto "${product.name}" (SKU: ${product.sku}). Cantidad: ${quantity}. Precio unitario: $${product.price.toFixed(2)}. Total: $${(product.price * quantity).toFixed(2)}`;
@@ -26,12 +39,12 @@ export function ProductDetail({ product }: ProductDetailProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
       {/* Imagen del producto */}
       <div className="flex flex-col">
-        <div className="relative w-full h-96 bg-gray-200 rounded-lg overflow-hidden mb-4">
+        <div className="relative w-full h-96 rounded-lg overflow-hidden mb-4 bg-white">
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-cover"
+            className="object-contain p-4"
             priority
             sizes="(max-width: 768px) 100vw, 50vw"
           />
@@ -48,14 +61,14 @@ export function ProductDetail({ product }: ProductDetailProps) {
             {product.images.map((img, idx) => (
               <div
                 key={idx}
-                className="w-20 h-20 bg-gray-200 rounded cursor-pointer hover:ring-2 hover:ring-blue-500"
+                className="w-20 h-20 bg-white rounded cursor-pointer hover:ring-2 hover:ring-blue-500"
               >
                 <Image
                   src={img}
                   alt={`${product.name} - Imagen ${idx + 1}`}
                   width={80}
                   height={80}
-                  className="object-cover w-full h-full"
+                  className="object-contain w-full h-full p-1"
                 />
               </div>
             ))}
@@ -145,6 +158,21 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
         {/* Botones de acción */}
         <div className="space-y-3">
+          <button
+            onClick={handleAddToCart}
+            disabled={!product.available}
+            className={`w-full py-4 px-6 rounded-lg font-bold text-white transition flex items-center justify-center gap-2 ${
+              product.available
+                ? "bg-blue-600 hover:bg-blue-700 cursor-pointer"
+                : "bg-gray-400 cursor-not-allowed opacity-50"
+            }`}
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.2 2.4A1 1 0 0 0 6.7 17h10.8M9 19.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+            </svg>
+            Agregar a la consulta
+          </button>
+
           <button
             onClick={handleWhatsAppClick}
             disabled={!product.available}

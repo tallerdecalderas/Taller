@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCart } from "@/app/context/CartContext";
+import { useCart } from "@/context/CartContext";
 
 export function CartBadge() {
   const { getTotalItems } = useCart();
@@ -17,6 +17,7 @@ export function CartBadge() {
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
+        suppressHydrationWarning
       >
         <path
           strokeLinecap="round"

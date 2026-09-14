@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useCart } from "@/app/context/CartContext";
-import { CartSummary } from "@/app/components/CartSummary";
+import { useCart } from "@/context/CartContext";
+import { CartSummary } from "@/components/CartSummary";
 import { generateWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp";
 
 export default function CartPage() {
@@ -24,7 +24,7 @@ export default function CartPage() {
       <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-4">
-            <Link href="/products" className="text-blue-100 hover:text-white">
+            <Link href="/productos" className="text-blue-100 hover:text-white">
               ← Volver al catálogo
             </Link>
           </div>

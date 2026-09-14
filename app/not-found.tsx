@@ -47,7 +47,7 @@ export default function NotFound() {
             ← Inicio
           </Link>
           <Link
-            href="/products"
+            href="/productos"
             className="inline-block px-6 py-3 border-2 border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition"
           >
             Catálogo →

@@ -1,19 +1,20 @@
 import { notFound } from "next/navigation";
-import { getProductById, products } from "@/lib/data/products";
-import { ProductDetail } from "@/app/components/ProductDetail";
+import { getProductById, getProducts, getProductsByCategory } from "@/lib/products/product-service";
+import { ProductDetail } from "@/components/ProductDetail";
 import Link from "next/link";
 import { Metadata } from "next";
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export async function generateMetadata(
   { params }: ProductPageProps
 ): Promise<Metadata> {
-  const product = getProductById(params.id);
+  const { id } = await params;
+  const product = getProductById(id);
 
   if (!product) {
     return {
@@ -41,21 +42,22 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return products.map((product) => ({
+  return getProducts().map((product) => ({
     id: product.id,
   }));
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = getProductById(params.id);
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { id } = await params;
+  const product = getProductById(id);
 
   if (!product) {
     notFound();
   }
 
   // Productos relacionados (misma categoría)
-  const relatedProducts = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
+  const relatedProducts = getProductsByCategory(product.category)
+    .filter((p) => p.id !== product.id)
     .slice(0, 4);
 
   return (
@@ -68,7 +70,7 @@ export default function ProductPage({ params }: ProductPageProps) {
               Inicio
             </Link>
             <span className="text-gray-400">›</span>
-            <Link href="/products" className="text-blue-600 hover:text-blue-700">
+            <Link href="/productos" className="text-blue-600 hover:text-blue-700">
               Productos
             </Link>
             <span className="text-gray-400">›</span>
@@ -93,7 +95,7 @@ export default function ProductPage({ params }: ProductPageProps) {
               {relatedProducts.map((relatedProduct) => (
                 <Link
                   key={relatedProduct.id}
-                  href={`/products/${relatedProduct.id}`}
+                  href={`/productos/${relatedProduct.id}`}
                 >
                   <div className="bg-white rounded-lg shadow hover:shadow-lg transition cursor-pointer overflow-hidden">
                     <div className="w-full h-40 bg-gray-200 relative">

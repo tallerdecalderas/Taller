@@ -1,15 +1,13 @@
-/**
- * Configuración global de la aplicación
- */
 
 export const config = {
   // Información de la empresa
   company: {
-    name: "Mi Tienda Online",
-    whatsappNumber: "34612345678", // Formato: código país + número sin +
-    whatsappCountryCode: "ES", // Código de país
-    email: "contacto@mitienda.com",
-    phone: "+34 (012) 345-678",
+    logo: "/logo_Taller.png",
+    name: "Taller de calderas",
+    whatsappNumber: "1151446625",
+    whatsappCountryCode: "AR",
+    email: "tallerdecalderasoficial@gmail.com",
+    phone: "1151446625",
   },
 
   // URLs
@@ -21,18 +19,13 @@ export const config = {
   // Configuración de filtros
   filters: {
     categories: [
-      "Electrónica",
-      "Ropa",
+      "Calderas",
+      "Calderas Restauradas",
+      "Repuestos Genéricos",
+      "Termostatos",
+      "Radiadores",
+      "Ventilación",
       "Accesorios",
-      "Hogar",
-      "Deportes",
-      "Libros",
-    ],
-    priceRanges: [
-      { label: "Menos de $50", min: 0, max: 50 },
-      { label: "$50 - $100", min: 50, max: 100 },
-      { label: "$100 - $200", min: 100, max: 200 },
-      { label: "Más de $200", min: 200, max: Infinity },
     ],
   },
 
@@ -40,9 +33,9 @@ export const config = {
   seo: {
     siteName: "Mi Tienda Online",
     description:
-      "Tienda online de productos de calidad. Consulta nuestro catálogo y contacta por WhatsApp.",
+      "Tienda online de productos de calidad. Consulta nuestro catálogo y contacta por WhatsApp. Servicio tecnico de calefaccion.",
     keywords:
-      "tienda, productos, catálogo, ecommerce, WhatsApp",
+      "tienda, productos, catálogo, urgencias, Caldera, Servicio tecnico",
     twitterHandle: "@mitienda",
     ogImage: "/og-image.png",
   },

@@ -1,9 +1,13 @@
 /**
  * Funciones de filtrado para productos
- * Todo el filtrado se ejecuta del lado del cliente (client-side)
+ * 
+ * NOTA: La mayoría de esta lógica ha sido movida a product-service.ts
+ * Este archivo se mantiene por compatibilidad hacia atrás
+ * Preferir usar filterProducts() de product-service.ts
  */
 
-import { Product, Filter } from "@/lib/types/product";
+import type { Product, ProductFilters } from "@/lib/types/product";
+import { filterProducts } from "@/lib/products/product-service";
 
 /**
  * Filtrar productos por búsqueda de texto
@@ -19,6 +23,7 @@ export function filterBySearch(products: Product[], searchTerm: string): Product
       product.description,
       product.shortDescription,
       product.category,
+      product.brand,
       product.sku,
       ...(product.tags || []),
     ];
@@ -41,35 +46,10 @@ export function filterByCategory(
 }
 
 /**
- * Filtrar productos por rango de precio
- */
-export function filterByPriceRange(
-  products: Product[],
-  minPrice?: number,
-  maxPrice?: number
-): Product[] {
-  return products.filter((product) => {
-    if (minPrice !== undefined && product.price < minPrice) return false;
-    if (maxPrice !== undefined && product.price > maxPrice) return false;
-    return true;
-  });
-}
-
-/**
- * Filtrar productos por disponibilidad
- */
-export function filterByAvailability(
-  products: Product[],
-  availableOnly: boolean
-): Product[] {
-  if (!availableOnly) return products;
-  return products.filter((product) => product.available);
-}
-
-/**
  * Filtrar por múltiples criterios
+ * @deprecated Usar filterProducts() de product-service.ts en su lugar
  */
-export function applyFilters(products: Product[], filters: Filter): Product[] {
+export function applyFilters(products: Product[], filters: ProductFilters): Product[] {
   let filtered = products;
 
   // Aplicar búsqueda
@@ -82,18 +62,9 @@ export function applyFilters(products: Product[], filters: Filter): Product[] {
     filtered = filterByCategory(filtered, filters.category);
   }
 
-  // Aplicar rango de precio
-  if (filters.minPrice !== undefined || filters.maxPrice !== undefined) {
-    filtered = filterByPriceRange(
-      filtered,
-      filters.minPrice,
-      filters.maxPrice
-    );
-  }
-
-  // Aplicar disponibilidad
-  if (filters.availability) {
-    filtered = filterByAvailability(filtered, true);
+  // Aplicar marca
+  if (filters.brand) {
+    filtered = filtered.filter((product) => product.brand === filters.brand);
   }
 
   return filtered;
@@ -101,8 +72,9 @@ export function applyFilters(products: Product[], filters: Filter): Product[] {
 
 /**
  * Obtener estadísticas de filtrados
+ * @deprecated Usar filterProducts() de product-service.ts en su lugar
  */
-export function getFilterStats(products: Product[], filters: Filter) {
+export function getFilterStats(products: Product[], filters: ProductFilters) {
   const filtered = applyFilters(products, filters);
   return {
     total: products.length,
