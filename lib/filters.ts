@@ -7,11 +7,10 @@
  */
 
 import type { Product, ProductFilters } from "@/lib/types/product";
-import { filterProducts } from "@/lib/products/product-service";
-
+// import { filterProducts } from "@/lib/products/product-service";
 /**
  * Filtrar productos por búsqueda de texto
- * Busca en nombre, descripción, categoría, SKU y tags
+ * Busca en nombre, CODE
  */
 export function filterBySearch(products: Product[], searchTerm: string): Product[] {
   if (!searchTerm.trim()) return products;
@@ -20,11 +19,7 @@ export function filterBySearch(products: Product[], searchTerm: string): Product
   return products.filter((product) => {
     const searchFields = [
       product.name,
-      product.description,
-      product.shortDescription,
-      product.category,
-      product.brand,
-      product.sku,
+      product.code,
       ...(product.tags || []),
     ];
 

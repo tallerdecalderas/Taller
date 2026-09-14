@@ -3,7 +3,7 @@ import type { Product } from "@/lib/types/product";
 export const radiadores: Product[] = [
     {
         id: "r-1",
-        sku: "RAD-PEISA-BR500",
+        code: "RAD-PEISA-BR500",
         name: "Radiador PEISA BR 500",
         description: "Radiador de aluminio para calefacción con buen rendimiento térmico y diseño compacto.",
         shortDescription: "Radiador PEISA BR 500",

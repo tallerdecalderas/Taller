@@ -23,7 +23,7 @@ export function generateWhatsAppMessage(items: CartItem[]): string {
     total += subtotal;
 
     message += `${index + 1}. *${item.product.name}*\n`;
-    message += `   SKU: ${item.product.sku}\n`;
+    message += `   CODE: ${item.product.code}\n`;
     message += `   Cantidad: ${item.quantity}\n`;
     message += `   Precio unitario: $${item.product.price.toFixed(2)}\n`;
     message += `   Subtotal: $${subtotal.toFixed(2)}\n\n`;
@@ -57,9 +57,9 @@ export function openWhatsApp(message: string): void {
  */
 export function generateSingleProductMessage(
   productName: string,
-  sku: string,
+  code: string,
   price: number,
   quantity: number
 ): string {
-  return `Hola, me interesa el producto "${productName}" (SKU: ${sku}). Cantidad: ${quantity}. Precio unitario: $${price.toFixed(2)}. Total: $${(price * quantity).toFixed(2)}`;
+  return `Hola, me interesa el producto "${productName}" (CODE: ${code}). Cantidad: ${quantity}. Precio unitario: $${price.toFixed(2)}. Total: $${(price * quantity).toFixed(2)}`;
 }

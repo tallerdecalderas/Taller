@@ -41,13 +41,13 @@ function parseCommaSeparatedValues(value?: string): string[] | undefined {
 
 export function mapGoogleSheetRowToProduct(row: GoogleSheetRow): Product | null {
     const id = row.id?.trim();
-    const sku = row.sku?.trim();
+    const code = row.code?.trim();
     const name = row.name?.trim();
     const description = row.description?.trim();
     const brand = row.brand as ProductBrand | undefined;
     const category = row.category as ProductCategory | undefined;
 
-    if (!id || !sku || !name || !description || !brand || !category) {
+    if (!id || !code || !name || !description || !brand || !category) {
         return null;
     }
 
@@ -77,7 +77,7 @@ export function mapGoogleSheetRowToProduct(row: GoogleSheetRow): Product | null 
 
     const product: Product = {
         id,
-        sku,
+        code,
         name,
         description,
         shortDescription: row.shortDescription?.trim() || undefined,

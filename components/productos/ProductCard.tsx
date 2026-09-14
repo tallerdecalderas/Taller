@@ -1,12 +1,31 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import { Product } from "@/lib/types/product";
+import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { addItem } = useCart();
+  const [isAdding, setIsAdding] = useState(false);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (!product.available) return;
+    
+    setIsAdding(true);
+    addItem(product, 1);
+    
+    setTimeout(() => setIsAdding(false), 500);
+  };
+
   return (
     <Link href={`/productos/${product.id}`}>
       <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer h-full flex flex-col">
@@ -33,7 +52,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         {/* Contenido */}
-        <div className="p-4 flex flex-col flex-grow">
+        <div className="p-4 flex flex-col grow">
           {/* Categoría */}
           <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded mb-2 w-fit">
             {product.category}
@@ -46,13 +65,13 @@ export function ProductCard({ product }: ProductCardProps) {
 
           {/* Descripción corta */}
           {product.shortDescription && (
-            <p className="text-gray-600 text-sm mb-3 line-clamp-2 flex-grow">
+            <p className="text-gray-600 text-sm mb-3 line-clamp-2 grow">
               {product.shortDescription}
             </p>
           )}
 
-          {/* SKU */}
-          <p className="text-gray-500 text-xs mb-3">SKU: {product.sku}</p>
+          {/* CODE */}
+          <p className="text-gray-500 text-xs mb-3">CODE: {product.code}</p>
 
           {/* Tags */}
           {product.tags && product.tags.length > 0 && (
@@ -68,20 +87,37 @@ export function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
 
-          {/* Precio */}
-          <div className="flex items-center justify-between mt-auto pt-3 border-t">
-            <span className="text-2xl font-bold text-blue-600">
-              ${product.price.toFixed(2)}
-            </span>
-            <span
-              className={`text-sm font-semibold ${
+          {/* Precio y Botón */}
+          <div className="flex flex-col gap-3 mt-auto pt-3 border-t">
+            <div className="flex items-center justify-between">
+              <span className="text-2xl font-bold text-blue-600">
+                ${product.price.toFixed(2)}
+              </span>
+              <span
+                className={`text-sm font-semibold ${
+                  product.available
+                    ? "text-green-600"
+                    : "text-red-600"
+                }`}
+              >
+                {product.available ? "Disponible" : "No disponible"}
+              </span>
+            </div>
+
+            {/* Botón Agregar al Carrito */}
+            <button
+              onClick={handleAddToCart}
+              disabled={!product.available || isAdding}
+              className={`w-full py-2 px-4 rounded-lg font-semibold text-sm transition-all duration-200 ${
                 product.available
-                  ? "text-green-600"
-                  : "text-red-600"
+                  ? isAdding
+                    ? "bg-green-600 text-white scale-[0.98]"
+                    : "bg-blue-600 text-white hover:bg-blue-700 active:scale-[0.98]"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
               }`}
             >
-              {product.available ? "Disponible" : "No disponible"}
-            </span>
+              {isAdding ? "✓ Agregado" : "Agregar al Carrito"}
+            </button>
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import type { Product } from "@/lib/types/product";
 export const calderas_restauradas: Product[] = [
     {
         id: "cr-1",
-        sku: "REST-BAXI-ECO4S",
+        code: "REST-BAXI-ECO4S",
         name: "Caldera BAXI Eco 4S restaurada",
         description: "Caldera revisada y restaurada de la gama BAXI Eco 4S, lista para uso con garantía de funcionamiento.",
         shortDescription: "Caldera BAXI restaurada",
@@ -11,14 +11,14 @@ export const calderas_restauradas: Product[] = [
         category: "calderas_restauradas",
         price: 1750000,
         available: true,
-        image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop",
+        image: "https://airfeel.cl/wp-content/uploads/2023/09/CALDERA-BAXI-ECO-4S-24-F.jpg",
         tags: ["Caldera", "Restaurada", "BAXI"],
         stock: 2,
         featured: false,
         specs: {
             powerKw: 24,
             gasType: "GN",
-            service: "doble",
+            service: "Doble servicio",
             technology: "convencional",
         },
     },

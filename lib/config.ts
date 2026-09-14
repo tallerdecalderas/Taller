@@ -31,11 +31,11 @@ export const config = {
 
   // SEO y metadatos
   seo: {
-    siteName: "Mi Tienda Online",
+    siteName: "Taller de calderas ",
     description:
       "Tienda online de productos de calidad. Consulta nuestro catálogo y contacta por WhatsApp. Servicio tecnico de calefaccion.",
     keywords:
-      "tienda, productos, catálogo, urgencias, Caldera, Servicio tecnico",
+      "tienda, productos, catálogo, urgencias, Caldera, Servicio tecnico, climatizadores, aires acondicionados",
     twitterHandle: "@mitienda",
     ogImage: "/og-image.png",
   },

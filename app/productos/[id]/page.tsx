@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProductById, getProducts, getProductsByCategory } from "@/lib/products/product-service";
-import { ProductDetail } from "@/components/ProductDetail";
+import { ProductDetail } from "@/components/productos/ProductDetail";
 import Link from "next/link";
 import { Metadata } from "next";
 

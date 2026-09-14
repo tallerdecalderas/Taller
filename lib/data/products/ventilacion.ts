@@ -3,7 +3,7 @@ import type { Product } from "@/lib/types/product";
 export const ventilacion: Product[] = [
     {
         id: "vent-1",
-        sku: "VENT-COAX-80",
+        code: "VENT-COAX-80",
         name: "Kit de ventilación coaxial 80 mm",
         description: "Kit de ventilación para calderas y sistemas de condensación con conducto coaxial.",
         shortDescription: "Kit coaxial para ventilación",

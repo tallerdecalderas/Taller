@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
-import { CartSummary } from "@/components/CartSummary";
+import { CartSummary } from "@/components/cart/CartSummary";
 import { generateWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp";
 
 export default function CartPage() {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Product } from "@/lib/types/product";
-import { QuantitySelector } from "./QuantitySelector";
+import { QuantitySelector } from "../shared/QuantitySelector";
 import { config } from "@/lib/config";
 import { useCart } from "@/context/CartContext";
 
@@ -27,7 +27,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
   };
 
   const handleWhatsAppClick = () => {
-    const message = `Hola, me interesa el producto "${product.name}" (SKU: ${product.sku}). Cantidad: ${quantity}. Precio unitario: $${product.price.toFixed(2)}. Total: $${(product.price * quantity).toFixed(2)}`;
+    const message = `Hola, me interesa el producto "${product.name}" (CODE: ${product.code}). Cantidad: ${quantity}. Precio unitario: $${product.price.toFixed(2)}. Total: $${(product.price * quantity).toFixed(2)}`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${config.company.whatsappNumber}?text=${encodedMessage}`;
@@ -99,8 +99,8 @@ export function ProductDetail({ product }: ProductDetailProps) {
           {product.name}
         </h1>
 
-        {/* SKU */}
-        <p className="text-gray-500 text-sm mb-4">SKU: {product.sku}</p>
+        {/* CODE */}
+        <p className="text-gray-500 text-sm mb-4">CODE: {product.code}</p>
 
         {/* Descripción */}
         <p className="text-gray-700 text-lg mb-6 leading-relaxed">

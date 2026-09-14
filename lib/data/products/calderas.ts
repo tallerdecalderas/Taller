@@ -3,7 +3,7 @@ import type { Product } from "@/lib/types/product";
 export const calderas: Product[] = [
     {
         id: "1",
-        sku: "BAXI-ECO4S-24F",
+        code: "BAXI-ECO4S-24F",
         name: "Caldera BAXI Eco 4S 24F",
         description:
             "Caldera mural a gas BAXI Eco 4S 24F de doble servicio para calefacción y agua caliente sanitaria. Sistema de tiro forzado, control electrónico y formato compacto.",
@@ -19,14 +19,14 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 24,
             gasType: "GN",
-            service: "doble",
+            service: "Doble servicio",
             technology: "convencional",
         },
         featured: true,
     },
     {
         id: "2",
-        sku: "BAXI-ECONOVA-24F",
+        code: "BAXI-ECONOVA-24F",
         name: "Caldera BAXI Eco Nova 24F",
         description:
             "Caldera mural BAXI Eco Nova 24F de doble servicio. Diseñada para calefacción y producción de agua caliente sanitaria con tiro forzado y control electrónico.",
@@ -42,14 +42,14 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 24,
             gasType: "GN",
-            service: "doble",
+            service: "Doble servicio",
             technology: "convencional",
         },
         featured: true,
     },
     {
         id: "3",
-        sku: "BAXI-LUNA3-240FI",
+        code: "BAXI-LUNA3-240FI",
         name: "Caldera BAXI Luna 3 Comfort 240 FI",
         description:
             "Caldera mural BAXI Luna 3 Comfort 240 FI de doble servicio. Equipo compacto con control electrónico, modulación de llama y producción de agua caliente sanitaria.",
@@ -65,14 +65,14 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 24,
             gasType: "GN/GL",
-            service: "doble",
+            service: "Doble servicio",
             technology: "convencional",
         },
         featured: true,
     },
     {
         id: "4",
-        sku: "BAXI-DUOTEC-24",
+        code: "BAXI-DUOTEC-24",
         name: "Caldera BAXI Duo Tec Compact 24",
         description:
             "Caldera BAXI Duo Tec Compact 24 de doble servicio para calefacción y agua caliente sanitaria. Equipo mural compacto de alto rendimiento.",
@@ -88,13 +88,13 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 24,
             gasType: "GN",
-            service: "doble",
+            service: "Doble servicio",
             technology: "condensación",
         },
     },
     {
         id: "5",
-        sku: "PEISA-PRIMA-TEC-24",
+        code: "PEISA-PRIMA-TEC-24",
         name: "Caldera PEISA Prima Tec 24 DS F",
         description:
             "Caldera mural PEISA Prima Tec 24 DS F de doble servicio para calefacción y agua caliente sanitaria. Cuenta con pantalla digital, intercambiador de placas y cámara estanca.",
@@ -110,14 +110,14 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 24,
             gasType: "GN",
-            service: "doble",
+            service: "Doble servicio",
             technology: "convencional",
         },
         featured: true,
     },
     {
         id: "6",
-        sku: "PEISA-DIVA-TECNO-24",
+        code: "PEISA-DIVA-TECNO-24",
         name: "Caldera PEISA Diva Tecno 24 DS F",
         description:
             "Caldera mural PEISA Diva Tecno 24 DS F de doble servicio para calefacción y agua caliente sanitaria. Equipada con intercambiador de placas y control electrónico.",
@@ -133,14 +133,14 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 24,
             gasType: "GN",
-            service: "doble",
+            service: "Doble servicio",
             technology: "convencional",
         },
         featured: true,
     },
     {
         id: "7",
-        sku: "PEISA-SUMMA-24",
+        code: "PEISA-SUMMA-24",
         name: "Caldera PEISA Summa Condens 24",
         description:
             "Caldera PEISA Summa Condens 24 de condensación para calefacción y agua caliente sanitaria. Cuenta con pantalla digital, intercambiador de placas y combustión electrónica.",
@@ -156,13 +156,13 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 24,
             gasType: "GN/GL",
-            service: "doble",
+            service: "Doble servicio",
             technology: "condensación",
         },
     },
     {
         id: "8",
-        sku: "PEISA-DIVA-DUO-32",
+        code: "PEISA-DIVA-DUO-32",
         name: "Caldera PEISA Diva Duo 32",
         description:
             "Caldera mural PEISA Diva Duo de 32.000 kcal/h para calefacción y agua caliente sanitaria. Equipo compacto con tiro forzado.",
@@ -178,7 +178,7 @@ export const calderas: Product[] = [
         specs: {
             powerKw: 32,
             gasType: "GN",
-            service: "doble",
+            service: "Doble servicio",
             technology: "convencional",
         },
     },

@@ -2,6 +2,22 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+    /* config options here */
+  onDemandEntries: {
+    maxInactiveAge: 15 * 1000,  // Recompila cada 15 segundos
+    pagesBufferLength: 5,
+  },
+  headers: async () => [
+    {
+      source: '/:path*',
+      headers: [
+        {
+          key: 'Cache-Control',
+          value: 'public, max-age=0, must-revalidate',
+        },
+      ],
+    },
+  ],
   images: {
     remotePatterns: [
       {
@@ -63,6 +79,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "www.eclimatizacion.es",
+      },
+      {
+        protocol: "https",
+        hostname: "airfeel.cl",
       },
     ],
   },

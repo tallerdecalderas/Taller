@@ -96,7 +96,7 @@ export function filterProducts(filters: ProductFilters): Product[] {
                 product.shortDescription,
                 product.brand,
                 product.category,
-                product.sku,
+                product.code,
                 ...(product.tags ?? []),
                 ...(product.specs?.compatibleModels ?? []),
             ]

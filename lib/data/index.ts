@@ -7,6 +7,7 @@ export {
     calderas,
     calderas_restauradas,
     repuestos,
+    repuestosGenericos,
     radiadores,
     termostatos,
     accesorios,

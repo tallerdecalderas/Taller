@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { config } from "@/lib/config";
-import { CartBadge } from "./CartBadge";
+import { CartBadge } from "../shared/CartBadge";
 import Image from "next/image";
 
 const navItems: Array<{ href: string; label: string; external?: boolean }> = [

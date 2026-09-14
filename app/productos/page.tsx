@@ -4,9 +4,9 @@ import Link from "next/link";
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { getProducts, filterProducts, getAllCategories, getAllBrands } from "@/lib/products/product-service";
-import { ProductCard } from "@/components/ProductCard";
-import { SearchBar } from "@/components/SearchBar";
-import { FilterPanel } from "@/components/FilterPanel";
+import { ProductCard } from "@/components/productos/ProductCard";
+import { SearchBar } from "@/components/productos/SearchBar";
+import { FilterPanel } from "@/components/productos/FilterPanel";
 import type { ProductBrand, ProductCategory, ProductFilters } from "@/lib/types/product";
 
 export default function ProductsPage() {
@@ -16,7 +16,8 @@ export default function ProductsPage() {
   const quickCategoryLinks = [
     { id: "calderas", label: "Calderas" },
     { id: "calderas_restauradas", label: "Calderas restauradas" },
-    { id: "repuestos_genericos", label: "Repuestos" },
+    { id: "repuestos_genericos", label: "Repuestos genericos" },
+    { id: "repuestos", label: "Repuestos" },
     { id: "termostatos", label: "Termostatos" },
     { id: "radiadores", label: "Radiadores" },
     { id: "ventilacion", label: "Ventilación" },

@@ -94,8 +94,8 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-copy">
             <span className="eyebrow">Servicio técnico de calefacción en Pilar</span>
-            <h1>
-              Somos el mejor servicio técnico de <span>Pilar</span>
+            <h1 className="text-shadow-amber-500">
+              Somos el mejor servicio técnico de <span>Zona norte</span>
             </h1>
             <p>
               Instalación, reparación y mantenimiento de calderas, termotanques y
@@ -105,7 +105,7 @@ export default function Home() {
 
             <div className="hero-actions">
               <Link href="/productos" className="btn btn-primary">
-                Pedir un técnico ahora
+                Ver catálogo
               </Link>
               <a
                 href={`https://wa.me/${config.company.whatsappNumber}?text=Hola%2C%20necesito%20ayuda%20t%C3%A9cnica%20para%20mi%20calefacci%C3%B3n`}
@@ -113,18 +113,18 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn btn-secondary"
               >
-                WhatsApp 24hs
+                Pedir un técnico ahora
               </a>
             </div>
 
             <div className="hero-stats">
               <div className="stat-item">
-                <strong>24hs</strong>
-                <span>Atención</span>
+                <strong>Historial</strong>
+                <span>services</span>
               </div>
               <div className="stat-item">
-                <strong>+10k</strong>
-                <span>Trabajos</span>
+                <strong>22 años</strong>
+                <span>De experiencia</span>
               </div>
               <div className="stat-item">
                 <strong>Garantía</strong>
@@ -264,7 +264,9 @@ export default function Home() {
       <section className="cta-band">
         <div className="cta-content">
           <span className="eyebrow eyebrow-cta">Confianza y rapidez</span>
-          <h2>Necesitás resolver una falla o agendar mantenimiento.</h2>
+          <h2>
+            Necesitás resolver una falla o agendar mantenimiento.
+          </h2>
           <p>
             Nuestro equipo está listo para ayudarte con la mejor atención del
             sector en Pilar.

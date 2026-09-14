@@ -6,10 +6,13 @@ export type ProductCategory =
   | "calderas"
   | "calderas_restauradas"
   | "repuestos_genericos"
+  | "repuestos"
   | "termostatos"
   | "radiadores"
   | "ventilacion"
   | "accesorios";
+  
+  
 
 export type ProductBrand =
   | "BAXI"
@@ -19,11 +22,12 @@ export type ProductBrand =
 export type GasType =
   | "GN"
   | "GL"
-  | "GN/GL";
+  | "GN/GL"
+
 
 export type ProductService =
-  | "simple"
-  | "doble";
+  | "Solo calefacción"
+  | "Doble servicio";
 
 export type ProductTechnology =
   | "convencional"
@@ -56,7 +60,7 @@ export interface ProductSpecs {
 export interface Product {
   id: string;
   name: string;
-
+  
   description: string;
   shortDescription?: string;
 
@@ -69,7 +73,7 @@ export interface Product {
   images?: string[];
 
   available: boolean;
-  sku: string;
+  code: string;
 
   tags?: string[];
   stock?: number;

@@ -3,7 +3,7 @@ import type { Product } from "@/lib/types/product";
 export const accesorios: Product[] = [
     {
         id: "acc-1",
-        sku: "ACC-TERM-ADAPT",
+        code: "ACC-TERM-ADAPT",
         name: "Adaptador para termostato",
         description: "Accesorio universal para adaptación y conexión de termostatos en sistemas de calefacción.",
         shortDescription: "Adaptador universal para termostato",

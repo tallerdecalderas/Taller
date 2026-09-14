@@ -9,7 +9,7 @@ interface SearchBarProps {
 
 export function SearchBar({
   onSearch,
-  placeholder = "Buscar por nombre, SKU, categoría...",
+  placeholder = "Buscar por nombre, CODE, categoría...",
 }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState("");
 

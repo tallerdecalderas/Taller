@@ -72,7 +72,7 @@ export function CartSummary({
               >
                 {item.product.name}
               </Link>
-              <p className="text-sm text-gray-600">SKU: {item.product.sku}</p>
+              <p className="text-sm text-gray-600">CODE: {item.product.code}</p>
               <p className="text-blue-600 font-bold mt-1">
                 ${item.product.price.toFixed(2)}
               </p>
