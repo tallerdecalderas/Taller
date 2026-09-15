@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { getProducts, filterProducts, getAllCategories, getAllBrands } from "@/lib/products/product-service";
@@ -9,7 +10,7 @@ import { SearchBar } from "@/components/productos/SearchBar";
 import { FilterPanel } from "@/components/productos/FilterPanel";
 import type { ProductBrand, ProductCategory, ProductFilters } from "@/lib/types/product";
 
-export default function ProductsPage() {
+function ProductsContent() {
   const searchParams = useSearchParams();
   const categories = getAllCategories();
   const brands = getAllBrands();
@@ -214,5 +215,13 @@ export default function ProductsPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProductsContent />
+    </Suspense>
   );
 }
