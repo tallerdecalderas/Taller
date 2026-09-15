@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Product } from "@/lib/types/product";
 import { QuantitySelector } from "../shared/QuantitySelector";
+import { QueryAddedModal } from "../shared/QueryAddedModal";
 import { config } from "@/lib/config";
 import { useCart } from "@/context/CartContext";
 
@@ -13,6 +14,7 @@ interface ProductDetailProps {
 
 export function ProductDetail({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1);
+  const [showAddedModal, setShowAddedModal] = useState(false);
   const { addItem } = useCart();
 
   const handleAddToCart = () => {
@@ -21,9 +23,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
     }
 
     addItem(product, quantity);
-    window.alert(
-      `✅ ${product.name} se agregó a tu consulta.\n\nPodés revisarla en "Mi Consulta" y enviarla por WhatsApp.`
-    );
+    setShowAddedModal(true);
   };
 
   const handleWhatsAppClick = () => {
@@ -36,7 +36,8 @@ export function ProductDetail({ product }: ProductDetailProps) {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8">
       {/* Imagen del producto */}
       <div className="flex flex-col">
         <div className="relative w-full h-96 rounded-lg overflow-hidden mb-4 bg-white">
@@ -225,6 +226,14 @@ export function ProductDetail({ product }: ProductDetailProps) {
           </ul>
         </div>
       </div>
-    </div>
+      </div>
+      {showAddedModal && (
+        <QueryAddedModal
+          product={product}
+          quantity={quantity}
+          onClose={() => setShowAddedModal(false)}
+        />
+      )}
+    </>
   );
 }
