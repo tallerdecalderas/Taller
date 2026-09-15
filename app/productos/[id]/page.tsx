@@ -98,11 +98,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   href={`/productos/${relatedProduct.id}`}
                 >
                   <div className="bg-white rounded-lg shadow hover:shadow-lg transition cursor-pointer overflow-hidden">
-                    <div className="w-full h-40 bg-gray-200 relative">
+                    <div className="relative h-40 w-full bg-white">
                       <img
                         src={relatedProduct.image}
                         alt={relatedProduct.name}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform"
+                        className="h-full w-full object-contain p-2 transition-transform hover:scale-105"
                       />
                     </div>
                     <div className="p-4">

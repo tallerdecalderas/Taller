@@ -5,7 +5,7 @@ export default function CapacitacionPage() {
   const courses = [
     {
       title: "Instalación de Calderas",
-      duration: "8 horas",
+      duration: "4 horas",
       price: "Consultar",
       topics: [
         "Normas de seguridad y regulaciones",
@@ -18,7 +18,7 @@ export default function CapacitacionPage() {
     },
     {
       title: "Mantenimiento de Sistemas de Calefacción",
-      duration: "6 horas",
+      duration: "4 horas",
       price: "Consultar",
       topics: [
         "Diagnóstico de problemas comunes",
@@ -224,7 +224,7 @@ export default function CapacitacionPage() {
             Consulta sobre disponibilidad de cursos y fechas de próximas capacitaciones
           </p>
           <a
-            href={`https://wa.me/${config.company.whatsappNumber}?text=Hola%2C%20me%20interesa%20capacitarme%20en%20sus%20programas`}
+            href={`https://wa.me/$1126232363?text=Hola%2C%20me%20interesa%20capacitarme%20en%20sus%20programas`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-white text-green-600 font-bold rounded-lg hover:bg-gray-100 transition text-lg"

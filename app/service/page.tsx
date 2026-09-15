@@ -103,8 +103,8 @@ export default function ServicePage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <p className="text-sm text-gray-600 font-semibold mb-2">Teléfono</p>
-                  <a href="tel:0810-222-7378" className="text-2xl font-bold text-blue-600 hover:underline">
-                    0810-222-7378
+                  <a href="tel:1125699615" className="text-2xl font-bold text-blue-600 hover:underline">
+                    11 2569-9615
                   </a>
                   <p className="text-gray-600 mt-1">Lunes a viernes: 9:00 - 17:00 hs</p>
                 </div>

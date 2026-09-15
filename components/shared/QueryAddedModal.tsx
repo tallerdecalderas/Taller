@@ -5,15 +5,21 @@ import { useEffect } from "react";
 import type { Product } from "@/lib/types/product";
 
 interface QueryAddedModalProps {
-  product: Product;
-  quantity: number;
+  product?: Product;
+  quantity?: number;
   onClose: () => void;
+  eyebrow?: string;
+  title?: string;
+  message?: string;
 }
 
 export function QueryAddedModal({
   product,
   quantity,
   onClose,
+  eyebrow = "Consulta actualizada",
+  title = "Producto agregado",
+  message = "Podés revisar tu selección en Mi Consulta y enviarla por WhatsApp cuando estés listo.",
 }: QueryAddedModalProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -50,10 +56,10 @@ export function QueryAddedModal({
               </span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-200">
-                  Consulta actualizada
+                  {eyebrow}
                 </p>
                 <h2 id="query-added-title" className="mt-1 text-xl font-bold text-white">
-                  Producto agregado
+                  {title}
                 </h2>
               </div>
             </div>
@@ -69,15 +75,15 @@ export function QueryAddedModal({
         </div>
 
         <div className="space-y-5 px-6 py-6">
-          <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-            <p className="font-semibold text-slate-900">{product.name}</p>
-            <p className="mt-1 text-sm text-slate-600">
-              Cantidad: {quantity} {quantity === 1 ? "unidad" : "unidades"}
-            </p>
-          </div>
-          <p className="text-sm leading-6 text-slate-600">
-            Podés revisar tu selección en Mi Consulta y enviarla por WhatsApp cuando estés listo.
-          </p>
+          {product && (
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+              <p className="font-semibold text-slate-900">{product.name}</p>
+              <p className="mt-1 text-sm text-slate-600">
+                Cantidad: {quantity} {quantity === 1 ? "unidad" : "unidades"}
+              </p>
+            </div>
+          )}
+          <p className="text-sm leading-6 text-slate-600">{message}</p>
 
           <div className="flex flex-col gap-3 sm:flex-row-reverse">
             <Link

@@ -3,14 +3,17 @@
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { CartSummary } from "@/components/cart/CartSummary";
+import { QueryAddedModal } from "@/components/shared/QueryAddedModal";
 import { generateWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp";
+import { useState } from "react";
 
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart } = useCart();
+  const [showEmptyCartModal, setShowEmptyCartModal] = useState(false);
 
   const handleSendToWhatsApp = () => {
     if (items.length === 0) {
-      alert("Tu carrito está vacío");
+      setShowEmptyCartModal(true);
       return;
     }
 
@@ -19,6 +22,7 @@ export default function CartPage() {
   };
 
   return (
+    <>
     <div>
       {/* Encabezado */}
       <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 px-4">
@@ -121,5 +125,14 @@ export default function CartPage() {
         </div>
       </section>
     </div>
+    {showEmptyCartModal && (
+      <QueryAddedModal
+        onClose={() => setShowEmptyCartModal(false)}
+        eyebrow="Mi Consulta"
+        title="Todavía no hay productos"
+        message="Agregá un producto desde el catálogo para poder enviarnos tu consulta por WhatsApp."
+      />
+    )}
+    </>
   );
 }
