@@ -110,7 +110,7 @@ export default function CapacitacionPage() {
                   </div>
 
                   <a
-                    href={`https://wa.me/${config.company.whatsappNumber}?text=Hola%2C%20me%20interesa%20el%20curso%20${encodeURIComponent(course.title)}`}
+                    href={`https://wa.me/${config.company.phoneCurso}?text=Hola%2C%20me%20interesa%20el%20curso%20${encodeURIComponent(course.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full px-4 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition inline-flex items-center justify-center gap-2"
