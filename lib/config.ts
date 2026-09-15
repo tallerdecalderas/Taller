@@ -2,12 +2,29 @@
 export const config = {
   // Información de la empresa
   company: {
-    logo: "/logo_Taller.png",
+    logo: "/webplogo.webp",
     name: "Taller de calderas",
-    whatsappNumber: "1151446625",
+    whatsappNumber: "1125699615",
     whatsappCountryCode: "AR",
     email: "tallerdecalderasoficial@gmail.com",
-    phone: "1151446625",
+    phone: "1125699615",
+  },
+
+  locations : [
+    {
+      name: "Sucursal Central",
+      address: "Salta polo club 2922, Manual Alberti, Pilar",
+      phone: "1125699615",
+      whatsapp: "+54 9 11 2569-9615",
+      hours: "Lunes a viernes: 9:00 - 17:00 hs",
+      services: ["Asesoramiento", "Venta", "Servicio tecnico"],
+    }
+  ],
+
+  sound: {
+    enabled: true,
+    src: "/sound/sonido.m4a",
+    volume: 0.52,
   },
 
   // URLs
@@ -37,7 +54,7 @@ export const config = {
     keywords:
       "tienda, productos, catálogo, urgencias, Caldera, Servicio tecnico, climatizadores, aires acondicionados",
     twitterHandle: "@mitienda",
-    ogImage: "/og-image.png",
+    ogImage: "./logo_Taller.png",
   },
 
   // Paginación

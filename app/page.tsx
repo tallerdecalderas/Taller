@@ -154,7 +154,7 @@ export default function Home() {
               </div>
               <div className="mini-card">
                 <span className="mini-bullet" />
-                Cobertura Pilar y zona
+                Cobertura Pilar, Zona norte y CABA 
               </div>
             </div>
           </div>
@@ -172,8 +172,7 @@ export default function Home() {
             <div className="feature-icon">01</div>
             <h3>Instalación</h3>
             <p>
-              Montaje profesional de calderas, termotanques y sistemas a gas para
-              una puesta en marcha segura y eficiente.
+              Montaje profesional de calderas, Climatizadores, Paneles solares puesta en marcha segura y eficiente.
             </p>
           </article>
 

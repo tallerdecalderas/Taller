@@ -69,7 +69,7 @@ export default function ProductsPage() {
   return (
     <div>
       {/* Encabezado */}
-      <section className="bg-gradient-to from-slate-900 via-slate-800 to-blue-900 text-white py-12 px-4">
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">
             Catálogo

@@ -3,6 +3,7 @@ import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { config } from "@/lib/config";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageOpenSound } from "@/components/layout/PageOpenSound";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 
@@ -25,6 +26,9 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/taller_de_calderas_favicon.ico",
+  },
   title: {
     default: `${config.company.name} - Catálogo de Productos`,
     template: `%s | ${config.company.name}`,
@@ -65,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="flex min-h-screen flex-col bg-[var(--background)] text-[var(--ink)]">
         <CartProvider>
+          <PageOpenSound />
           <Header />
           <main className="flex-grow">{children}</main>
           <Footer />

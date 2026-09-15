@@ -39,23 +39,4 @@ export const repuestosGenericos: Product[] = [
             compatibleModels: ["BAXI Eco 4S", "BAXI Eco Nova", "PEISA Prima Tec"],
         },
     },
-    {
-        id: "12",
-        code: "REP-BOMBA-15-60",
-        name: "Bomba circuladora 15-60",
-        description:
-            "Bomba circuladora de 3 velocidades para sistemas de calefacción y como repuesto para distintas calderas murales.",
-        shortDescription: "Bomba circuladora 15-60 para caldera",
-        brand: "GENÉRICO",
-        category: "repuestos_genericos",
-        price: 210000,
-        stock: 4,
-        available: true,
-        image:
-            "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&h=600&fit=crop",
-        tags: ["Bomba", "Circuladora", "15-60", "Calefacción"],
-        specs: {
-            compatibleModels: ["BAXI Eco 4S", "BAXI Duo Tec", "PEISA Prima Tec", "PEISA Diva"],
-        },
-    },
 ];

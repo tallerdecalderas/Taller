@@ -2,16 +2,6 @@ import Link from "next/link";
 import { config } from "@/lib/config";
 
 export default function DondeComprarPage() {
-  const locations = [
-    {
-      name: "Sucursal Central",
-      address: "Avenida del Libertador 6655, CABA",
-      phone: "0810-222-7378",
-      whatsapp: "+54 9 11 3511-6785",
-      hours: "Lunes a viernes: 9:00 - 17:00 hs",
-      services: ["Asesoramiento", "Venta", "Instalación"],
-    },
-  ];
 
   return (
     <div className="bg-white">
@@ -35,7 +25,7 @@ export default function DondeComprarPage() {
         <div className="max-w-7xl mx-auto">
           {/* Ubicaciones */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {locations.map((location, idx) => (
+            {config.locations.map((location, idx) => (
               <div key={idx} className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-blue-600">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">{location.name}</h2>
                 

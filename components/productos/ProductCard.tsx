@@ -104,7 +104,7 @@ export function ProductCard({ product }: ProductCardProps) {
               </span>
             </div>
 
-            {/* Botón Agregar al Carrito */}
+            {/* Botón Agregar a la consulta*/}
             <button
               onClick={handleAddToCart}
               disabled={!product.available || isAdding}
@@ -116,7 +116,7 @@ export function ProductCard({ product }: ProductCardProps) {
                   : "bg-gray-300 text-gray-500 cursor-not-allowed"
               }`}
             >
-              {isAdding ? "✓ Agregado" : "Agregar al Carrito"}
+              {isAdding ? "✓ Agregado" : "Agregar"}
             </button>
           </div>
         </div>
