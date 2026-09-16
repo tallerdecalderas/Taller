@@ -24,13 +24,15 @@ export const config = {
   sound: {
     enabled: true,
     src: "/sound/sonido.m4a",
-    volume: 0.52,
+    volume: 0.72,
   },
 
   // URLs
   urls: {
     base: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
-    whatsappBase: "https://wa.me/",
+    whatsappBase: "https://wa.me/1125699615",
+    instagram: "https://www.instagram.com/tallerdecalderasoficial/",
+    facebook: "https://www.facebook.com/tallerdecalderasoficial/"
   },
 
   // Configuración de filtros
@@ -50,10 +52,10 @@ export const config = {
   seo: {
     siteName: "Taller de calderas ",
     description:
-      "Tienda online de productos de calidad. Consulta nuestro catálogo y contacta por WhatsApp. Servicio tecnico de calefaccion.",
+      "Consulta nuestro catálogo y contacta por WhatsApp. Servicio tecnico de calefaccion.",
     keywords:
-      "tienda, productos, catálogo, urgencias, Caldera, Servicio tecnico, climatizadores, aires acondicionados",
-    twitterHandle: "@mitienda",
+      "tienda, productos, urgencias, Caldera, Servicio tecnico, climatizadores, aires acondicionados",
+    twitterHandle: "@tallerdecalderasoficial",
     ogImage: "./logo_Taller.png",
   },
 

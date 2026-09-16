@@ -63,13 +63,6 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
 
-          {/* Descripción corta */}
-          {product.shortDescription && (
-            <p className="text-gray-600 text-sm mb-3 line-clamp-2 grow">
-              {product.shortDescription}
-            </p>
-          )}
-
           {/* CODE */}
           <p className="text-gray-500 text-xs mb-3">CODE: {product.code}</p>
 

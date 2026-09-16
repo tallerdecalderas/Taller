@@ -3,7 +3,7 @@
  */
 
 import { CartItem } from "@/lib/types/product";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 
 /**
  * Generar mensaje de WhatsApp formateado

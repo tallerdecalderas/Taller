@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Product } from "@/lib/types/product";
 import { QuantitySelector } from "../shared/QuantitySelector";
 import { QueryAddedModal } from "../shared/QueryAddedModal";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 import { useCart } from "@/context/CartContext";
 
 interface ProductDetailProps {

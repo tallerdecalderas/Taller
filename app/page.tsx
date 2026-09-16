@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 import { getFeaturedProducts } from "@/lib/products/product-service";
 import { categories } from "@/lib/data/categories";
 

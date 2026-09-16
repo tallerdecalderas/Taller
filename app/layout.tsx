@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageOpenSound } from "@/components/layout/PageOpenSound";
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     icon: "/taller_de_calderas_favicon.ico",
   },
   title: {
-    default: `${config.company.name} - Catálogo de Productos`,
+    default: `${config.company.name} - Servicio Tecnico especializado - Catálogo de Productos`,
     template: `%s | ${config.company.name}`,
   },
   description: config.seo.description,

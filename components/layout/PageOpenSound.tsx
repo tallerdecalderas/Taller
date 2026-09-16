@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 
 export function PageOpenSound() {
   useEffect(() => {

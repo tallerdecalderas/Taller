@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 import { CartBadge } from "../shared/CartBadge";
 import Image from "next/image";
 
