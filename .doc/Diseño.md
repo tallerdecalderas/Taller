@@ -4,6 +4,7 @@ en desktop y no está bien adaptado a otros tamaños de pantalla.
 
 DIAGNÓSTICO PRIMERO
 Antes de tocar nada, revisá y listame:
+
 1. Si existe el meta viewport (<meta name="viewport" content="width=device-width, initial-scale=1">)
 2. Qué unidades se usan para fuentes y espaciados (px fijos vs rem/em/%)
 3. Si los contenedores principales tienen un max-width definido o se estiran
@@ -13,6 +14,7 @@ Antes de tocar nada, revisá y listame:
    sm: md: lg: xl:) o si todo usa un solo tamaño fijo
 
 APLICÁ ESTOS CAMBIOS
+
 - Agregá el meta viewport si falta
 - Convertí tamaños de fuente y espaciados clave de px a rem, y usá
   clamp(mín, preferido, máx) en títulos grandes (hero, h1) para que

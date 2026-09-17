@@ -1,4 +1,3 @@
-
 export const config = {
   // Información de la empresa
   company: {
@@ -10,7 +9,7 @@ export const config = {
     phone: "1125699615",
   },
 
-  locations : [
+  locations: [
     {
       name: "Sucursal Central",
       address: "Salta polo club 2922, Manual Alberti, Pilar",
@@ -18,7 +17,7 @@ export const config = {
       whatsapp: "+54 9 11 2569-9615",
       hours: "Lunes a viernes: 9:00 - 17:00 hs",
       services: ["Asesoramiento", "Venta", "Servicio tecnico"],
-    }
+    },
   ],
 
   sound: {
@@ -32,7 +31,7 @@ export const config = {
     base: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
     whatsappBase: "https://wa.me/1125699615",
     instagram: "https://www.instagram.com/tallerdecalderasoficial/",
-    facebook: "https://www.facebook.com/tallerdecalderasoficial/"
+    facebook: "https://www.facebook.com/tallerdecalderasoficial/",
   },
 
   // Configuración de filtros

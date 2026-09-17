@@ -10,11 +10,7 @@ interface QueryAddedModalProps {
   onClose: () => void;
 }
 
-export function QueryAddedModal({
-  product,
-  quantity,
-  onClose,
-}: QueryAddedModalProps) {
+export function QueryAddedModal({ product, quantity, onClose }: QueryAddedModalProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -49,7 +45,7 @@ export function QueryAddedModal({
                 ✓
               </span>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-200">
+                <p className="text-xs font-semibold tracking-[0.16em] text-blue-200 uppercase">
                   Consulta actualizada
                 </p>
                 <h2 id="query-added-title" className="mt-1 text-xl font-bold text-white">

@@ -18,12 +18,12 @@ export { ventilacion } from "./ventilacion";
 export { repuestosGenericos } from "./repuestos_genericos";
 
 export const products: Product[] = [
-    ...calderas,
-    ...calderas_restauradas,
-    ...repuestos,
-    ...radiadores,
-    ...termostatos,
-    ...accesorios,
-    ...ventilacion,
-    ...repuestosGenericos,
+  ...calderas,
+  ...calderas_restauradas,
+  ...repuestos,
+  ...radiadores,
+  ...termostatos,
+  ...accesorios,
+  ...ventilacion,
+  ...repuestosGenericos,
 ];

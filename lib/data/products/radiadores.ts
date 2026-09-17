@@ -1,5 +1,3 @@
 import type { Product } from "@/lib/types/product";
 
-export const radiadores: Product[] = [
- 
-];
+export const radiadores: Product[] = [];

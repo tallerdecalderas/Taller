@@ -11,27 +11,14 @@ export type ProductCategory =
   | "radiadores"
   | "ventilacion"
   | "accesorios";
-  
-  
 
-export type ProductBrand =
-  | "BAXI"
-  | "PEISA"
-  | "GENÉRICO";
+export type ProductBrand = "BAXI" | "PEISA" | "GENÉRICO";
 
-export type GasType =
-  | "GN"
-  | "GL"
-  | "GN/GL"
+export type GasType = "GN" | "GL" | "GN/GL";
 
+export type ProductService = "Solo calefacción" | "Doble servicio";
 
-export type ProductService =
-  | "Solo calefacción"
-  | "Doble servicio";
-
-export type ProductTechnology =
-  | "convencional"
-  | "condensación";
+export type ProductTechnology = "convencional" | "condensación";
 
 export interface ProductSpecs {
   powerKw?: number;
@@ -60,7 +47,7 @@ export interface ProductSpecs {
 export interface Product {
   id: string;
   name: string;
-  
+
   description: string;
   shortDescription?: string;
 

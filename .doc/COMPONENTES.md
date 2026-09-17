@@ -5,6 +5,7 @@ Guía de dónde encontrar cada componente según su función y página.
 ## 📁 Organización
 
 ### `layout/` - Componentes Globales
+
 Utilizados en todas las páginas a través de `layout.tsx`
 
 - **`Header.tsx`** - Barra de navegación principal
@@ -22,6 +23,7 @@ Utilizados en todas las páginas a través de `layout.tsx`
 ---
 
 ### `shared/` - Componentes Reutilizables
+
 Utilizados en múltiples lugares del sitio
 
 - **`CartBadge.tsx`** - Badge del carrito en Header
@@ -35,6 +37,7 @@ Utilizados en múltiples lugares del sitio
 ---
 
 ### `productos/` - Componentes de Productos
+
 Usados en páginas de catálogo y detalles de productos
 
 - **`ProductCard.tsx`** - Tarjeta de producto
@@ -62,6 +65,7 @@ Usados en páginas de catálogo y detalles de productos
 ---
 
 ### `cart/` - Componentes del Carrito
+
 Usados en páginas relacionadas con el carrito
 
 - **`CartSummary.tsx`** - Resumen del carrito
@@ -71,31 +75,34 @@ Usados en páginas relacionadas con el carrito
 ---
 
 ### `inicio/` - Componentes de Inicio
-*Reservado para componentes específicos de la página de inicio*
+
+_Reservado para componentes específicos de la página de inicio_
 
 ---
 
 ### `donde-comprar/` - Componentes de "Dónde Comprar"
-*Reservado para componentes específicos de la página de ubicaciones*
+
+_Reservado para componentes específicos de la página de ubicaciones_
 
 ---
 
 ### `service/` - Componentes de Service
-*Reservado para componentes específicos de la página de servicio*
+
+_Reservado para componentes específicos de la página de servicio_
 
 ---
 
 ## 📊 Mapa de Uso por Página
 
-| Página | Ruta | Componentes |
-|--------|------|-------------|
-| Inicio | `/` | `Header`, `Footer` |
-| Catálogo | `/productos` | `Header`, `Footer`, `ProductCard`, `SearchBar`, `FilterPanel`, `FilterButton`, `CartBadge` |
-| Detalle Producto | `/productos/[id]` | `Header`, `Footer`, `ProductDetail`, `QuantitySelector`, `CartBadge` |
-| Carrito/Consulta | `/cart`, `/consulta` | `Header`, `Footer`, `CartSummary`, `CartBadge` |
-| Dónde Comprar | `/donde-comprar` | `Header`, `Footer`, `CartBadge` |
-| Service | `/service` | `Header`, `Footer`, `CartBadge` |
-| Capacitación | `/capacitacion` | `Header`, `Footer`, `CartBadge` |
+| Página           | Ruta                 | Componentes                                                                                |
+| ---------------- | -------------------- | ------------------------------------------------------------------------------------------ |
+| Inicio           | `/`                  | `Header`, `Footer`                                                                         |
+| Catálogo         | `/productos`         | `Header`, `Footer`, `ProductCard`, `SearchBar`, `FilterPanel`, `FilterButton`, `CartBadge` |
+| Detalle Producto | `/productos/[id]`    | `Header`, `Footer`, `ProductDetail`, `QuantitySelector`, `CartBadge`                       |
+| Carrito/Consulta | `/cart`, `/consulta` | `Header`, `Footer`, `CartSummary`, `CartBadge`                                             |
+| Dónde Comprar    | `/donde-comprar`     | `Header`, `Footer`, `CartBadge`                                                            |
+| Service          | `/service`           | `Header`, `Footer`, `CartBadge`                                                            |
+| Capacitación     | `/capacitacion`      | `Header`, `Footer`, `CartBadge`                                                            |
 
 ---
 

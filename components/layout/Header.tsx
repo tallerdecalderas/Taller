@@ -54,7 +54,7 @@ export function Header() {
               >
                 {item.label}
               </Link>
-            )
+            ),
           )}
         </div>
 
@@ -111,7 +111,7 @@ export function Header() {
                   >
                     {item.label}
                   </Link>
-                )
+                ),
               )}
             </div>
           </div>

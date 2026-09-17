@@ -16,16 +16,13 @@ export function CartSummary({
   onUpdateQuantity,
   showCheckout = true,
 }: CartSummaryProps) {
-  const total = items.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
-    0
-  );
+  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
   if (items.length === 0) {
     return (
-      <div className="text-center py-12">
+      <div className="py-12 text-center">
         <svg
-          className="w-16 h-16 text-gray-400 mx-auto mb-4"
+          className="mx-auto mb-4 h-16 w-16 text-gray-400"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -37,11 +34,11 @@ export function CartSummary({
             d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
           />
         </svg>
-        <h3 className="text-lg font-bold text-gray-900 mb-2">Carrito vacío</h3>
-        <p className="text-gray-600 mb-6">No tienes productos seleccionados</p>
+        <h3 className="mb-2 text-lg font-bold text-gray-900">Carrito vacío</h3>
+        <p className="mb-6 text-gray-600">No tienes productos seleccionados</p>
         <Link
           href="/productos"
-          className="inline-block px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition"
+          className="inline-block rounded-lg bg-blue-600 px-6 py-2 font-medium text-white transition hover:bg-blue-700"
         >
           Ir al Catálogo
         </Link>
@@ -52,15 +49,15 @@ export function CartSummary({
   return (
     <div className="space-y-4">
       {/* Listado de items */}
-      <div className="bg-white rounded-lg shadow divide-y">
+      <div className="divide-y rounded-lg bg-white shadow">
         {items.map((item) => (
-          <div key={item.product.id} className="p-4 flex gap-4">
+          <div key={item.product.id} className="flex gap-4 p-4">
             {/* Imagen */}
-            <div className="w-20 h-20 flex-shrink-0 rounded bg-white overflow-hidden">
+            <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded bg-white">
               <img
                 src={item.product.image}
                 alt={item.product.name}
-                className="w-full h-full object-contain p-1"
+                className="h-full w-full object-contain p-1"
               />
             </div>
 
@@ -73,18 +70,14 @@ export function CartSummary({
                 {item.product.name}
               </Link>
               <p className="text-sm text-gray-600">CODE: {item.product.code}</p>
-              <p className="text-blue-600 font-bold mt-1">
-                ${item.product.price.toFixed(2)}
-              </p>
+              <p className="mt-1 font-bold text-blue-600">${item.product.price.toFixed(2)}</p>
             </div>
 
             {/* Cantidad y acciones */}
             <div className="flex flex-col items-end gap-2">
-              <div className="flex items-center border border-gray-300 rounded">
+              <div className="flex items-center rounded border border-gray-300">
                 <button
-                  onClick={() =>
-                    onUpdateQuantity?.(item.product.id, item.quantity - 1)
-                  }
+                  onClick={() => onUpdateQuantity?.(item.product.id, item.quantity - 1)}
                   className="px-2 py-1 text-gray-600 hover:bg-gray-100"
                   disabled={item.quantity <= 1}
                 >
@@ -92,9 +85,7 @@ export function CartSummary({
                 </button>
                 <span className="px-3 py-1 font-bold">{item.quantity}</span>
                 <button
-                  onClick={() =>
-                    onUpdateQuantity?.(item.product.id, item.quantity + 1)
-                  }
+                  onClick={() => onUpdateQuantity?.(item.product.id, item.quantity + 1)}
                   className="px-2 py-1 text-gray-600 hover:bg-gray-100"
                 >
                   +
@@ -107,7 +98,7 @@ export function CartSummary({
 
               <button
                 onClick={() => onRemoveItem?.(item.product.id)}
-                className="text-red-600 hover:text-red-700 text-xs font-bold"
+                className="text-xs font-bold text-red-600 hover:text-red-700"
               >
                 Eliminar
               </button>
@@ -117,27 +108,24 @@ export function CartSummary({
       </div>
 
       {/* Resumen total */}
-      <div className="bg-blue-50 rounded-lg p-6">
-        <div className="flex justify-between items-center mb-4">
+      <div className="rounded-lg bg-blue-50 p-6">
+        <div className="mb-4 flex items-center justify-between">
           <span className="font-bold text-gray-900">Cantidad de productos:</span>
-          <span className="font-bold text-lg">
+          <span className="text-lg font-bold">
             {items.reduce((sum, item) => sum + item.quantity, 0)}
           </span>
         </div>
-        <div className="border-t border-blue-200 pt-4 flex justify-between items-center">
+        <div className="flex items-center justify-between border-t border-blue-200 pt-4">
           <span className="text-lg font-bold text-gray-900">Total:</span>
-          <span className="text-3xl font-bold text-blue-600">
-            ${total.toFixed(2)}
-          </span>
+          <span className="text-3xl font-bold text-blue-600">${total.toFixed(2)}</span>
         </div>
       </div>
 
       {/* Nota informativa */}
-      <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-sm text-yellow-800">
+      <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-800">
         <p>
-          <span className="font-bold">ℹ️ Nota:</span> Este es un presupuesto estimado.
-          El precio final será confirmado por nuestro equipo tras revisar tu
-          consulta.
+          <span className="font-bold">ℹ️ Nota:</span> Este es un presupuesto estimado. El precio
+          final será confirmado por nuestro equipo tras revisar tu consulta.
         </p>
       </div>
     </div>

@@ -2,17 +2,17 @@ Quiero que reorganices la arquitectura de datos del catálogo de productos de mi
 
 IMPORTANTE:
 
-* Antes de modificar archivos, inspeccioná la estructura actual del proyecto y los archivos relacionados con productos.
-* No reemplaces ni rompas funcionalidad existente.
-* No cambies componentes de UI salvo que sea estrictamente necesario para adaptar imports.
-* No agregues librerías nuevas.
-* No uses `any`.
-* Mantené TypeScript estricto.
-* Aprovechá los tipos y servicios que ya existen en el proyecto.
-* El objetivo es solamente reorganizar y mejorar la arquitectura de los datos del catálogo.
-* Actualmente los productos son datos estáticos.
-* En el futuro estos datos podrán venir desde Prisma/PostgreSQL.
-* Los componentes del frontend NO deben depender directamente de cómo están almacenados los productos.
+- Antes de modificar archivos, inspeccioná la estructura actual del proyecto y los archivos relacionados con productos.
+- No reemplaces ni rompas funcionalidad existente.
+- No cambies componentes de UI salvo que sea estrictamente necesario para adaptar imports.
+- No agregues librerías nuevas.
+- No uses `any`.
+- Mantené TypeScript estricto.
+- Aprovechá los tipos y servicios que ya existen en el proyecto.
+- El objetivo es solamente reorganizar y mejorar la arquitectura de los datos del catálogo.
+- Actualmente los productos son datos estáticos.
+- En el futuro estos datos podrán venir desde Prisma/PostgreSQL.
+- Los componentes del frontend NO deben depender directamente de cómo están almacenados los productos.
 
 ==================================================
 OBJETIVO
@@ -26,25 +26,25 @@ a una estructura separada por categoría:
 
 src/
 ├── types/
-│   └── product.ts
+│ └── product.ts
 │
 ├── data/
-│   ├── products/
-│   │   ├── index.ts
-│   │   ├── calderas.ts
-│   │   ├── repuestos.ts
-│   │   ├── radiadores.ts
-│   │   ├── termostatos.ts
-│   │   ├── accesorios.ts
-│   │   └── ventilacion.ts
-│   │
-│   ├── categories.ts
-│   ├── brands.ts
-│   └── index.ts
+│ ├── products/
+│ │ ├── index.ts
+│ │ ├── calderas.ts
+│ │ ├── repuestos.ts
+│ │ ├── radiadores.ts
+│ │ ├── termostatos.ts
+│ │ ├── accesorios.ts
+│ │ └── ventilacion.ts
+│ │
+│ ├── categories.ts
+│ ├── brands.ts
+│ └── index.ts
 │
 ├── lib/
-│   └── products/
-│       └── product-service.ts
+│ └── products/
+│ └── product-service.ts
 │
 └── components/
 └── products/
@@ -68,21 +68,21 @@ Antes de crear un nuevo archivo, determinar cuál es la ubicación actual correc
 
 El tipo `Product` debe soportar:
 
-* id
-* name
-* description
-* shortDescription
-* price
-* brand
-* category
-* image
-* images
-* available
-* sku
-* tags
-* stock
-* specs
-* featured
+- id
+- name
+- description
+- shortDescription
+- price
+- brand
+- category
+- image
+- images
+- available
+- sku
+- tags
+- stock
+- specs
+- featured
 
 Definir tipos estrictos para:
 
@@ -100,35 +100,25 @@ export type ProductCategory =
 Definir:
 
 ```ts
-export type ProductBrand =
-  | "BAXI"
-  | "PEISA"
-  | "GENÉRICO";
+export type ProductBrand = "BAXI" | "PEISA" | "GENÉRICO";
 ```
 
 Definir:
 
 ```ts
-export type GasType =
-  | "GN"
-  | "GL"
-  | "GN/GL";
+export type GasType = "GN" | "GL" | "GN/GL";
 ```
 
 Definir:
 
 ```ts
-export type ProductService =
-  | "simple"
-  | "doble";
+export type ProductService = "simple" | "doble";
 ```
 
 Definir:
 
 ```ts
-export type ProductTechnology =
-  | "convencional"
-  | "condensación";
+export type ProductTechnology = "convencional" | "condensación";
 ```
 
 Definir `ProductSpecs`:
@@ -201,8 +191,7 @@ export interface Product {
 }
 ```
 
-==================================================
-2. PRODUCT FILTERS
+================================================== 2. PRODUCT FILTERS
 ==================
 
 Definir o adaptar `ProductFilters`.
@@ -242,8 +231,7 @@ brand?: string;
 
 cuando pueda utilizarse el tipo correspondiente.
 
-==================================================
-3. CATEGORÍAS
+================================================== 3. CATEGORÍAS
 =============
 
 Revisar el archivo existente:
@@ -255,13 +243,13 @@ Corregir los IDs para que sean consistentes y estables.
 NO usar:
 
 ```ts
-id: "calderas Restauradas"
+id: "calderas Restauradas";
 ```
 
 Usar:
 
 ```ts
-id: "calderas_restauradas"
+id: "calderas_restauradas";
 ```
 
 La lista debe incluir:
@@ -306,7 +294,7 @@ No dejar `intercambiadores` como categoría principal si conceptualmente corresp
 Los intercambiadores pueden tener:
 
 ```ts
-category: "repuestos_genericos"
+category: "repuestos_genericos";
 ```
 
 y posteriormente utilizar:
@@ -319,14 +307,13 @@ o implementar `subcategory` solamente si realmente se necesita.
 
 Mantener las funciones existentes:
 
-* getCategoryById
-* getCategoryName
-* isValidCategory
+- getCategoryById
+- getCategoryName
+- isValidCategory
 
 y adaptarlas si es necesario.
 
-==================================================
-4. MARCAS
+================================================== 4. MARCAS
 =========
 
 Mantener:
@@ -354,15 +341,14 @@ export const brands = [
 
 Mantener:
 
-* BrandId
-* getBrandById
-* getBrandName
-* isValidBrand
+- BrandId
+- getBrandById
+- getBrandName
+- isValidBrand
 
 No duplicar estos tipos en otros archivos.
 
-==================================================
-5. SEPARAR LOS PRODUCTOS
+================================================== 5. SEPARAR LOS PRODUCTOS
 ========================
 
 Eliminar la dependencia conceptual del antiguo:
@@ -396,8 +382,7 @@ export const calderas: Product[] = [
 
 Usar el alias real del proyecto si la ubicación de los tipos es diferente.
 
-==================================================
-6. REASIGNAR LOS PRODUCTOS EXISTENTES
+================================================== 6. REASIGNAR LOS PRODUCTOS EXISTENTES
 =====================================
 
 Mover TODOS los productos actuales al archivo correspondiente.
@@ -406,65 +391,64 @@ Ejemplo:
 
 Calderas:
 
-* BAXI Eco 4S 24F
-* BAXI Eco Nova 24F
-* BAXI Luna 3 Comfort 240 FI
-* BAXI Duo Tec Compact 24
-* PEISA Prima Tec 24 DS F
-* PEISA Diva Tecno 24 DS F
-* PEISA Summa Condens 24
-* PEISA Diva Duo 32
-* etc.
+- BAXI Eco 4S 24F
+- BAXI Eco Nova 24F
+- BAXI Luna 3 Comfort 240 FI
+- BAXI Duo Tec Compact 24
+- PEISA Prima Tec 24 DS F
+- PEISA Diva Tecno 24 DS F
+- PEISA Summa Condens 24
+- PEISA Diva Duo 32
+- etc.
 
 Repuestos:
 
-* vaso de expansión
-* flujostatos
-* sondas
-* presostatos
-* electrodos
-* válvulas
-* bombas
-* intercambiadores
-* etc.
+- vaso de expansión
+- flujostatos
+- sondas
+- presostatos
+- electrodos
+- válvulas
+- bombas
+- intercambiadores
+- etc.
 
 Termostatos:
 
-* PEISA Digital
-* PEISA Inalámbrico
-* PEISA Digital Programable
-* PEISA Touch
-* PEISA Zentraly Wi-Fi
-* PEISA Zentraly Wi-Fi Mesa
-* BAXI Connect
-* etc.
+- PEISA Digital
+- PEISA Inalámbrico
+- PEISA Digital Programable
+- PEISA Touch
+- PEISA Zentraly Wi-Fi
+- PEISA Zentraly Wi-Fi Mesa
+- BAXI Connect
+- etc.
 
 Radiadores:
 
-* PEISA BR 500
-* PEISA Tropical
-* BAXI Dubal
-* BAXI Astral
-* BAXI Kiral
-* etc.
+- PEISA BR 500
+- PEISA Tropical
+- BAXI Dubal
+- BAXI Astral
+- BAXI Kiral
+- etc.
 
 Ventilación:
 
-* kits coaxiales
-* extensiones
-* codos
-* terminales
-* ventilación para condensación
-* etc.
+- kits coaxiales
+- extensiones
+- codos
+- terminales
+- ventilación para condensación
+- etc.
 
 Accesorios:
 
-* cualquier producto que corresponda conceptualmente a esta categoría.
+- cualquier producto que corresponda conceptualmente a esta categoría.
 
 NO perder ningún producto durante la migración.
 
-==================================================
-7. PRODUCTS INDEX
+================================================== 7. PRODUCTS INDEX
 =================
 
 Crear:
@@ -482,8 +466,7 @@ export { accesorios } from "./accesorios";
 export { ventilacion } from "./ventilacion";
 ```
 
-==================================================
-8. DATA INDEX
+================================================== 8. DATA INDEX
 =============
 
 Mantener un único punto de entrada:
@@ -497,27 +480,16 @@ Ejemplo:
 ```ts
 export * from "./products";
 
-export {
-  categories,
-  getCategoryById,
-  getCategoryName,
-  isValidCategory,
-} from "./categories";
+export { categories, getCategoryById, getCategoryName, isValidCategory } from "./categories";
 
 export type { CategoryId } from "./categories";
 
-export {
-  brands,
-  getBrandById,
-  getBrandName,
-  isValidBrand,
-} from "./brands";
+export { brands, getBrandById, getBrandName, isValidBrand } from "./brands";
 
 export type { BrandId } from "./brands";
 ```
 
-==================================================
-9. PRODUCT SERVICE
+================================================== 9. PRODUCT SERVICE
 ==================
 
 Mantener:
@@ -552,30 +524,28 @@ const products: Product[] = [
 
 Los componentes NO deben importar este array directamente.
 
-==================================================
-10. API DEL PRODUCT SERVICE
+================================================== 10. API DEL PRODUCT SERVICE
 ===========================
 
 Mantener estas funciones:
 
 ```ts
-getProducts()
+getProducts();
 
-getProductById(id)
+getProductById(id);
 
-getProductsByCategory(category)
+getProductsByCategory(category);
 
-getProductsByBrand(brand)
+getProductsByBrand(brand);
 
-filterProducts(filters)
+filterProducts(filters);
 ```
 
 Si alguna no existe actualmente, crearla.
 
 El frontend debe consumir estas funciones y no acceder directamente a los archivos de datos.
 
-==================================================
-11. FILTRADO
+================================================== 11. FILTRADO
 ============
 
 `filterProducts()` debe permitir combinar filtros.
@@ -619,26 +589,24 @@ No incorporar todavía librerías externas de búsqueda o filtros.
 
 Para el catálogo estático utilizar `.filter()` y lógica TypeScript.
 
-==================================================
-12. SEARCH
+================================================== 12. SEARCH
 ==========
 
 El campo `search` debe buscar dentro de:
 
-* name
-* description
-* shortDescription
-* brand
-* category
-* tags
-* compatibleModels
+- name
+- description
+- shortDescription
+- brand
+- category
+- tags
+- compatibleModels
 
 Normalizar el texto para búsqueda case-insensitive.
 
 Si tiene sentido, eliminar diferencias básicas de mayúsculas/minúsculas.
 
-==================================================
-13. IMÁGENES
+================================================== 13. IMÁGENES
 ============
 
 No cambiar arbitrariamente las imágenes existentes.
@@ -662,8 +630,7 @@ NO descargar automáticamente imágenes desde sitios externos durante esta tarea
 
 Solamente reorganizar las rutas existentes si ya son locales.
 
-==================================================
-14. COMPONENTES
+================================================== 14. COMPONENTES
 ===============
 
 Buscar todos los componentes que actualmente hagan algo como:
@@ -677,19 +644,14 @@ o cualquier import equivalente.
 Reemplazarlo por:
 
 ```ts
-import {
-  getProducts,
-  getProductById,
-  filterProducts,
-} from "@/lib/products/product-service";
+import { getProducts, getProductById, filterProducts } from "@/lib/products/product-service";
 ```
 
 No cambiar la interfaz visual.
 
 No reescribir componentes completos si solamente es necesario modificar imports o llamadas de datos.
 
-==================================================
-15. COMPATIBILIDAD
+================================================== 15. COMPATIBILIDAD
 ==================
 
 Si existe código que todavía necesita importar:
@@ -714,8 +676,7 @@ Si no existen dependencias, eliminar el archivo antiguo para evitar duplicidad.
 
 Debe existir UNA sola fuente de datos.
 
-==================================================
-16. ARQUITECTURA FUTURA
+================================================== 16. ARQUITECTURA FUTURA
 =======================
 
 La arquitectura debe quedar preparada para cambiar:
@@ -752,41 +713,39 @@ data/products/*.ts
 
 son solamente mocks/datos estáticos.
 
-==================================================
-17. RESULTADO ESPERADO
+================================================== 17. RESULTADO ESPERADO
 ======================
 
 La arquitectura final debe ser:
 
 src/
 ├── lib/
-│   ├── types/
-│   │   └── product.ts
-│   │
-│   └── products/
-│       └── product-service.ts
+│ ├── types/
+│ │ └── product.ts
+│ │
+│ └── products/
+│ └── product-service.ts
 │
 ├── data/
-│   ├── products/
-│   │   ├── index.ts
-│   │   ├── calderas.ts
-│   │   ├── repuestos.ts
-│   │   ├── radiadores.ts
-│   │   ├── termostatos.ts
-│   │   ├── accesorios.ts
-│   │   └── ventilacion.ts
-│   │
-│   ├── categories.ts
-│   ├── brands.ts
-│   └── index.ts
+│ ├── products/
+│ │ ├── index.ts
+│ │ ├── calderas.ts
+│ │ ├── repuestos.ts
+│ │ ├── radiadores.ts
+│ │ ├── termostatos.ts
+│ │ ├── accesorios.ts
+│ │ └── ventilacion.ts
+│ │
+│ ├── categories.ts
+│ ├── brands.ts
+│ └── index.ts
 │
 └── components/
 └── products/
 
 Adaptar las rutas si la estructura actual del proyecto difiere.
 
-==================================================
-18. VALIDACIÓN FINAL
+================================================== 18. VALIDACIÓN FINAL
 ====================
 
 Al terminar:
@@ -808,8 +767,8 @@ Limitate a la arquitectura de datos de productos y a los cambios estrictamente n
 
 Al finalizar, mostrar un resumen de:
 
-* archivos creados
-* archivos modificados
-* archivos eliminados
-* cambios realizados
-* posibles problemas encontrados
+- archivos creados
+- archivos modificados
+- archivos eliminados
+- cambios realizados
+- posibles problemas encontrados

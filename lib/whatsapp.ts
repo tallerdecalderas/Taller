@@ -59,7 +59,7 @@ export function generateSingleProductMessage(
   productName: string,
   code: string,
   price: number,
-  quantity: number
+  quantity: number,
 ): string {
   return `Hola, me interesa el producto "${productName}" (CODE: ${code}). Cantidad: ${quantity}. Precio unitario: $${price.toFixed(2)}. Total: $${(price * quantity).toFixed(2)}`;
 }

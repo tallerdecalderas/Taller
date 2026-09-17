@@ -30,38 +30,38 @@ GOOGLE_PRIVATE_KEY=
 
 La estructura recomendada es:
 
-| Columna | Tipo | Ejemplo |
-| --- | --- | --- |
-| id | string | 1 |
-| sku | string | CAL-001 |
-| name | string | Caldera Baxi |
-| description | string | Descripción del producto |
-| shortDescription | string | Breve detalle |
-| price | number | 450000 |
-| brand | string | BAXI |
-| category | string | calderas |
-| image | string | /images/producto.jpg |
-| images | string | /a.jpg;/b.jpg |
-| available | boolean | true |
-| stock | number | 12 |
-| tags | string | clima,gas,caldera |
-| featured | boolean | true |
-| powerKw | number | 24 |
-| gasType | string | GN |
-| service | string | simple |
-| technology | string | condensación |
-| liters | number | 35 |
-| elementCount | number | 4 |
-| compatibleModels | string | Modelo A, Modelo B |
-| voltage | string | 220V |
-| connection | string | gas |
-| pressureBar | number | 2 |
-| heightMm | number | 700 |
-| widthMm | number | 400 |
-| depthMm | number | 350 |
-| diameterMm | string | 180 |
-| lengthMm | number | 600 |
-| ventilationType | string | coaxial |
+| Columna          | Tipo    | Ejemplo                  |
+| ---------------- | ------- | ------------------------ |
+| id               | string  | 1                        |
+| sku              | string  | CAL-001                  |
+| name             | string  | Caldera Baxi             |
+| description      | string  | Descripción del producto |
+| shortDescription | string  | Breve detalle            |
+| price            | number  | 450000                   |
+| brand            | string  | BAXI                     |
+| category         | string  | calderas                 |
+| image            | string  | /images/producto.jpg     |
+| images           | string  | /a.jpg;/b.jpg            |
+| available        | boolean | true                     |
+| stock            | number  | 12                       |
+| tags             | string  | clima,gas,caldera        |
+| featured         | boolean | true                     |
+| powerKw          | number  | 24                       |
+| gasType          | string  | GN                       |
+| service          | string  | simple                   |
+| technology       | string  | condensación             |
+| liters           | number  | 35                       |
+| elementCount     | number  | 4                        |
+| compatibleModels | string  | Modelo A, Modelo B       |
+| voltage          | string  | 220V                     |
+| connection       | string  | gas                      |
+| pressureBar      | number  | 2                        |
+| heightMm         | number  | 700                      |
+| widthMm          | number  | 400                      |
+| depthMm          | number  | 350                      |
+| diameterMm       | string  | 180                      |
+| lengthMm         | number  | 600                      |
+| ventilationType  | string  | coaxial                  |
 
 ## Comportamiento de seguridad
 
