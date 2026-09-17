@@ -7,11 +7,7 @@ export const config = {
     whatsappCountryCode: "AR",
     email: "tallerdecalderasoficial@gmail.com",
     phone: "1125699615",
-<<<<<<< HEAD:lib/config.ts
-    phoneCurso:"1126232363"
-=======
     whatsappAulaClima: "1126232363",
->>>>>>> develop:utils/config.ts
   },
 
   locations: [

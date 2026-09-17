@@ -106,19 +106,7 @@ export default function ServicePage() {
 
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-<<<<<<< HEAD
-                  <p className="text-sm text-gray-600 font-semibold mb-2">Teléfono</p>
-                  <a href="tel:1125699615" className="text-2xl font-bold text-blue-600 hover:underline">
-                    11 2569-9615
-                  </a>
-                  <p className="text-gray-600 mt-1">Lunes a viernes: 9:00 - 17:00 hs</p>
-                </div>
-                
-                <div>
-                  <p className="text-sm text-gray-600 font-semibold mb-2">WhatsApp</p>
-=======
                   <p className="mb-2 text-sm font-semibold text-gray-600">Teléfono</p>
->>>>>>> develop
                   <a
                     href="tel:+54 9 11 2569-9615"
                     className="text-2xl font-bold text-blue-600 hover:underline"

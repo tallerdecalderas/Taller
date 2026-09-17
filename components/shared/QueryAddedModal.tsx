@@ -13,7 +13,6 @@ interface QueryAddedModalProps {
   message?: string;
 }
 
-<<<<<<< HEAD
 export function QueryAddedModal({
   product,
   quantity,
@@ -22,9 +21,6 @@ export function QueryAddedModal({
   title = "Producto agregado",
   message = "Podés revisar tu selección en Mi Consulta y enviarla por WhatsApp cuando estés listo.",
 }: QueryAddedModalProps) {
-=======
-export function QueryAddedModal({ product, quantity, onClose }: QueryAddedModalProps) {
->>>>>>> develop
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -59,13 +55,8 @@ export function QueryAddedModal({ product, quantity, onClose }: QueryAddedModalP
                 ✓
               </span>
               <div>
-<<<<<<< HEAD
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-blue-200">
-                  {eyebrow}
-=======
                 <p className="text-xs font-semibold tracking-[0.16em] text-blue-200 uppercase">
-                  Consulta actualizada
->>>>>>> develop
+                  {eyebrow}
                 </p>
                 <h2 id="query-added-title" className="mt-1 text-xl font-bold text-white">
                   {title}
