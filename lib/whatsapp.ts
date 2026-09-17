@@ -2,8 +2,8 @@
  * Utilidades para generar mensajes de WhatsApp
  */
 
-import { CartItem } from "@/lib/types/product";
-import { config } from "@/lib/config";
+import { CartItem } from "@/types/product";
+import { config } from "@/utils/config";
 
 /**
  * Generar mensaje de WhatsApp formateado
@@ -59,7 +59,7 @@ export function generateSingleProductMessage(
   productName: string,
   code: string,
   price: number,
-  quantity: number
+  quantity: number,
 ): string {
   return `Hola, me interesa el producto "${productName}" (CODE: ${code}). Cantidad: ${quantity}. Precio unitario: $${price.toFixed(2)}. Total: $${(price * quantity).toFixed(2)}`;
 }

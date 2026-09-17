@@ -10,9 +10,7 @@ interface ProductPageProps {
   }>;
 }
 
-export async function generateMetadata(
-  { params }: ProductPageProps
-): Promise<Metadata> {
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
   const product = getProductById(id);
 
@@ -64,7 +62,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <div>
       {/* Breadcrumb */}
       <div className="bg-gray-50 px-4 py-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-7xl">
           <div className="flex items-center gap-2 text-sm">
             <Link href="/" className="text-blue-600 hover:text-blue-700">
               Inicio
@@ -80,33 +78,28 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div>
 
       {/* Contenido del producto */}
-      <section className="max-w-7xl mx-auto px-4">
+      <section className="mx-auto max-w-7xl px-4">
         <ProductDetail product={product} />
       </section>
 
       {/* Productos relacionados */}
       {relatedProducts.length > 0 && (
-        <section className="bg-gray-50 py-12 px-4 mt-12">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">
-              Productos Relacionados
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="mt-12 bg-gray-50 px-4 py-12">
+          <div className="mx-auto max-w-7xl">
+            <h2 className="mb-8 text-3xl font-bold text-gray-900">Productos Relacionados</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {relatedProducts.map((relatedProduct) => (
-                <Link
-                  key={relatedProduct.id}
-                  href={`/productos/${relatedProduct.id}`}
-                >
-                  <div className="bg-white rounded-lg shadow hover:shadow-lg transition cursor-pointer overflow-hidden">
+                <Link key={relatedProduct.id} href={`/productos/${relatedProduct.id}`}>
+                  <div className="cursor-pointer overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg">
                     <div className="relative h-40 w-full bg-white">
                       <img
                         src={relatedProduct.image}
                         alt={relatedProduct.name}
-                        className="h-full w-full object-contain p-2 transition-transform hover:scale-105"
+                        className="h-full w-full object-contain transition-transform hover:scale-105"
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="font-bold text-gray-900 mb-1 line-clamp-2">
+                      <h3 className="mb-1 line-clamp-2 font-bold text-gray-900">
                         {relatedProduct.name}
                       </h3>
                       <p className="text-2xl font-bold text-blue-600">

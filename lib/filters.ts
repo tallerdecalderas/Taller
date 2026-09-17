@@ -1,12 +1,12 @@
 /**
  * Funciones de filtrado para productos
- * 
+ *
  * NOTA: La mayoría de esta lógica ha sido movida a product-service.ts
  * Este archivo se mantiene por compatibilidad hacia atrás
  * Preferir usar filterProducts() de product-service.ts
  */
 
-import type { Product, ProductFilters } from "@/lib/types/product";
+import type { Product, ProductFilters } from "@/types/product";
 // import { filterProducts } from "@/lib/products/product-service";
 /**
  * Filtrar productos por búsqueda de texto
@@ -17,25 +17,16 @@ export function filterBySearch(products: Product[], searchTerm: string): Product
 
   const term = searchTerm.toLowerCase();
   return products.filter((product) => {
-    const searchFields = [
-      product.name,
-      product.code,
-      ...(product.tags || []),
-    ];
+    const searchFields = [product.name, product.code, ...(product.tags || [])];
 
-    return searchFields.some((field) =>
-      field?.toLowerCase().includes(term)
-    );
+    return searchFields.some((field) => field?.toLowerCase().includes(term));
   });
 }
 
 /**
  * Filtrar productos por categoría
  */
-export function filterByCategory(
-  products: Product[],
-  category: string
-): Product[] {
+export function filterByCategory(products: Product[], category: string): Product[] {
   if (!category) return products;
   return products.filter((product) => product.category === category);
 }

@@ -1,5 +1,3 @@
-import type { Product } from "@/lib/types/product";
+import type { Product } from "@/types/product";
 
-export const accesorios: Product[] = [
-
-];
+export const accesorios: Product[] = [];

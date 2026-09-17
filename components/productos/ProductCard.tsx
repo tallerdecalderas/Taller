@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Product } from "@/lib/types/product";
+import { Product } from "@/types/product";
 import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
@@ -17,70 +17,60 @@ export function ProductCard({ product }: ProductCardProps) {
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (!product.available) return;
-    
+
     setIsAdding(true);
     addItem(product, 1);
-    
+
     setTimeout(() => setIsAdding(false), 500);
   };
 
   return (
     <Link href={`/productos/${product.id}`}>
-      <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer h-full flex flex-col">
+      <div className="flex h-full cursor-pointer flex-col overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-300 hover:shadow-xl">
         {/* Imagen del producto */}
-        <div className="relative w-full h-48 bg-white overflow-hidden">
+        <div className="relative h-48 w-full overflow-hidden bg-white">
           <Image
             src={product.image}
             alt={product.name}
             fill
-            className="object-contain p-3 hover:scale-[1.02] transition-transform duration-300"
+            className="object-contain p-3 transition-transform duration-300 hover:scale-[1.02]"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={false}
           />
           {!product.available && (
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">Agotado</span>
+            <div className="bg-opacity-50 absolute inset-0 flex items-center justify-center bg-black">
+              <span className="text-lg font-bold text-white">Agotado</span>
             </div>
           )}
           {product.stock && product.stock < 5 && product.available && (
-            <div className="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+            <div className="absolute top-2 right-2 rounded bg-red-500 px-2 py-1 text-xs font-bold text-white">
               ¡Solo {product.stock}!
             </div>
           )}
         </div>
 
         {/* Contenido */}
-        <div className="p-4 flex flex-col grow">
+        <div className="flex grow flex-col p-4">
           {/* Categoría */}
-          <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded mb-2 w-fit">
+          <span className="mb-2 inline-block w-fit rounded bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-800">
             {product.category}
           </span>
 
           {/* Nombre */}
-          <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 hover:text-blue-600">
+          <h3 className="mb-2 line-clamp-2 font-bold text-gray-900 hover:text-blue-600">
             {product.name}
           </h3>
 
-          {/* Descripción corta */}
-          {product.shortDescription && (
-            <p className="text-gray-600 text-sm mb-3 line-clamp-2 grow">
-              {product.shortDescription}
-            </p>
-          )}
-
           {/* CODE */}
-          <p className="text-gray-500 text-xs mb-3">CODE: {product.code}</p>
+          <p className="mb-3 text-xs text-gray-500">CODE: {product.code}</p>
 
           {/* Tags */}
           {product.tags && product.tags.length > 0 && (
             <div className="mb-3 flex flex-wrap gap-1">
               {product.tags.slice(0, 2).map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded"
-                >
+                <span key={tag} className="rounded bg-gray-100 px-2 py-1 text-xs text-gray-700">
                   #{tag}
                 </span>
               ))}
@@ -88,16 +78,12 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
 
           {/* Precio y Botón */}
-          <div className="flex flex-col gap-3 mt-auto pt-3 border-t">
+          <div className="mt-auto flex flex-col gap-3 border-t pt-3">
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-blue-600">
-                ${product.price.toFixed(2)}
-              </span>
+              <span className="text-2xl font-bold text-blue-600">${product.price.toFixed(2)}</span>
               <span
                 className={`text-sm font-semibold ${
-                  product.available
-                    ? "text-green-600"
-                    : "text-red-600"
+                  product.available ? "text-green-600" : "text-red-600"
                 }`}
               >
                 {product.available ? "Disponible" : "No disponible"}
@@ -108,12 +94,12 @@ export function ProductCard({ product }: ProductCardProps) {
             <button
               onClick={handleAddToCart}
               disabled={!product.available || isAdding}
-              className={`w-full py-2 px-4 rounded-lg font-semibold text-sm transition-all duration-200 ${
+              className={`w-full rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 ${
                 product.available
                   ? isAdding
-                    ? "bg-green-600 text-white scale-[0.98]"
+                    ? "scale-[0.98] bg-green-600 text-white"
                     : "bg-blue-600 text-white hover:bg-blue-700 active:scale-[0.98]"
-                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "cursor-not-allowed bg-gray-300 text-gray-500"
               }`}
             >
               {isAdding ? "✓ Agregado" : "Agregar"}

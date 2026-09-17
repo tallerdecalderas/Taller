@@ -1,4 +1,3 @@
-
 export const config = {
   // Información de la empresa
   company: {
@@ -8,10 +7,14 @@ export const config = {
     whatsappCountryCode: "AR",
     email: "tallerdecalderasoficial@gmail.com",
     phone: "1125699615",
+<<<<<<< HEAD:lib/config.ts
     phoneCurso:"1126232363"
+=======
+    whatsappAulaClima: "1126232363",
+>>>>>>> develop:utils/config.ts
   },
 
-  locations : [
+  locations: [
     {
       name: "Sucursal Central",
       address: "Salta polo club 2922, Manual Alberti, Pilar",
@@ -19,19 +22,21 @@ export const config = {
       whatsapp: "+54 9 11 2569-9615",
       hours: "Lunes a viernes: 9:00 - 17:00 hs",
       services: ["Asesoramiento", "Venta", "Servicio tecnico"],
-    }
+    },
   ],
 
   sound: {
     enabled: true,
     src: "/sound/sonido.m4a",
-    volume: 0.52,
+    volume: 0.72,
   },
 
   // URLs
   urls: {
     base: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
-    whatsappBase: "https://wa.me/",
+    whatsappBase: "https://wa.me/1125699615",
+    instagram: "https://www.instagram.com/tallerdecalderasoficial/",
+    facebook: "https://www.facebook.com/tallerdecalderasoficial/",
   },
 
   // Configuración de filtros
@@ -51,10 +56,10 @@ export const config = {
   seo: {
     siteName: "Taller de calderas ",
     description:
-      "Tienda online de productos de calidad. Consulta nuestro catálogo y contacta por WhatsApp. Servicio tecnico de calefaccion.",
+      "Consulta nuestro catálogo y contacta por WhatsApp. Servicio tecnico de calefaccion.",
     keywords:
-      "tienda, productos, catálogo, urgencias, Caldera, Servicio tecnico, climatizadores, aires acondicionados",
-    twitterHandle: "@mitienda",
+      "tienda, productos, urgencias, Caldera, Servicio tecnico, climatizadores, aires acondicionados",
+    twitterHandle: "@tallerdecalderasoficial",
     ogImage: "./logo_Taller.png",
   },
 

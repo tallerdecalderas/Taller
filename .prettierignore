@@ -1,0 +1,25 @@
+# Dependencias
+node_modules
+.pnpm-store
+
+# Build de Next.js
+.next
+out
+build
+dist
+
+# Lockfiles
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Generados
+next-env.d.ts
+*.tsbuildinfo
+
+# Assets y estáticos
+public
+
+# Config
+.env
+.env.*

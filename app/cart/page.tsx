@@ -25,24 +25,22 @@ export default function CartPage() {
     <>
     <div>
       {/* Encabezado */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-2 mb-4">
+      <section className="bg-linear-to-r from-blue-600 to-purple-600 px-4 py-12 text-white">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-4 flex items-center gap-2">
             <Link href="/productos" className="text-blue-100 hover:text-white">
               ← Volver al catálogo
             </Link>
           </div>
           <h1 className="text-4xl font-bold">Mi Consulta</h1>
-          <p className="text-blue-100">
-            Revisa los productos que has seleccionado
-          </p>
+          <p className="text-blue-100">Revisa los productos que has seleccionado</p>
         </div>
       </section>
 
       {/* Contenido */}
-      <section className="py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <section className="px-4 py-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {/* Carrito principal */}
             <div className="lg:col-span-2">
               <CartSummary
@@ -55,12 +53,10 @@ export default function CartPage() {
             {/* Sidebar con acciones */}
             {items.length > 0 && (
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg shadow-lg p-6 sticky top-20 space-y-4">
-                  <h2 className="text-xl font-bold text-gray-900">
-                    Resumen de tu Consulta
-                  </h2>
+                <div className="sticky top-20 space-y-4 rounded-lg bg-white p-6 shadow-lg">
+                  <h2 className="text-xl font-bold text-gray-900">Resumen de tu Consulta</h2>
 
-                  <div className="space-y-3 py-4 border-y">
+                  <div className="space-y-3 border-y py-4">
                     <div className="flex justify-between text-gray-600">
                       <span>Productos:</span>
                       <span className="font-bold">
@@ -76,11 +72,7 @@ export default function CartPage() {
                       <span>
                         $
                         {items
-                          .reduce(
-                            (sum, item) =>
-                              sum + item.product.price * item.quantity,
-                            0
-                          )
+                          .reduce((sum, item) => sum + item.product.price * item.quantity, 0)
                           .toFixed(2)}
                       </span>
                     </div>
@@ -89,14 +81,16 @@ export default function CartPage() {
                   {/* Botón principal */}
                   <button
                     onClick={handleSendToWhatsApp}
-                    className="w-full py-4 px-6 bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg transition flex items-center justify-center gap-2"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-green-500 px-6 py-4 font-bold text-white transition hover:bg-green-600"
                   >
                     <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
+                      className="h-6 w-6 shrink-0"
                       viewBox="0 0 24 24"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
                     >
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.779c0 2.678.735 5.309 2.126 7.565L2.957 22l8.041-2.11a9.86 9.86 0 004.712 1.2h.005c5.451 0 9.876-4.429 9.876-9.882 0-2.646-.744-5.125-2.162-7.257A9.841 9.841 0 0011.051 6.979" />
+                      <path d="M20.52 3.48A11.87 11.87 0 0 0 12.05 0C5.5 0 .17 5.33.17 11.9c0 2.1.55 4.15 1.6 5.96L.06 24l6.28-1.65a11.85 11.85 0 0 0 5.7 1.45h.01c6.55 0 11.88-5.33 11.88-11.9 0-3.18-1.23-6.16-3.41-8.42ZM12.05 21.8h-.01a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-3.73.98.99-3.64-.23-.37a9.88 9.88 0 0 1-1.52-5.28c0-5.47 4.45-9.92 9.92-9.92a9.86 9.86 0 0 1 7.03 2.92 9.9 9.9 0 0 1 2.91 7.05c0 5.47-4.45 9.92-9.92 9.92Zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.78-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35Z" />
                     </svg>
                     Enviar por WhatsApp
                   </button>
@@ -104,14 +98,14 @@ export default function CartPage() {
                   {/* Botón secundario */}
                   <button
                     onClick={clearCart}
-                    className="w-full py-2 px-4 border-2 border-red-500 text-red-600 hover:bg-red-50 font-bold rounded-lg transition"
+                    className="w-full rounded-lg border-2 border-red-500 px-4 py-2 font-bold text-red-600 transition hover:bg-red-50"
                   >
                     Vaciar Consulta
                   </button>
 
                   {/* Información */}
-                  <div className="bg-blue-50 rounded p-4 text-xs text-blue-800">
-                    <p className="font-bold mb-2">ℹ️ ¿Cómo funciona?</p>
+                  <div className="rounded bg-blue-50 p-4 text-xs text-blue-800">
+                    <p className="mb-2 font-bold">ℹ️ ¿Cómo funciona?</p>
                     <ul className="space-y-1">
                       <li>• Al hacer clic, se abrirá WhatsApp con tu consulta</li>
                       <li>• Puedes editar el mensaje antes de enviar</li>

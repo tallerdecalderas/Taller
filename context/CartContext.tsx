@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useCallback,
-  useEffect,
-} from "react";
-import { CartItem } from "@/lib/types/product";
-import { Product } from "@/lib/types/product";
+import { createContext, useContext, useState, ReactNode, useCallback, useEffect } from "react";
+import { CartItem } from "@/types/product";
+import { Product } from "@/types/product";
 
 interface CartContextType {
   items: CartItem[];
@@ -57,9 +50,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (existingItem) {
         // Si el producto ya existe, incrementar la cantidad
         return prevItems.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
+          item.product.id === product.id ? { ...item, quantity: item.quantity + quantity } : item,
         );
       } else {
         // Agregar nuevo producto
@@ -69,25 +60,22 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const removeItem = useCallback((productId: string) => {
-    setItems((prevItems) =>
-      prevItems.filter((item) => item.product.id !== productId)
-    );
+    setItems((prevItems) => prevItems.filter((item) => item.product.id !== productId));
   }, []);
 
-  const updateQuantity = useCallback((productId: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeItem(productId);
-      return;
-    }
+  const updateQuantity = useCallback(
+    (productId: string, quantity: number) => {
+      if (quantity <= 0) {
+        removeItem(productId);
+        return;
+      }
 
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.product.id === productId
-          ? { ...item, quantity }
-          : item
-      )
-    );
-  }, [removeItem]);
+      setItems((prevItems) =>
+        prevItems.map((item) => (item.product.id === productId ? { ...item, quantity } : item)),
+      );
+    },
+    [removeItem],
+  );
 
   const clearCart = useCallback(() => {
     setItems([]);
@@ -98,10 +86,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [items]);
 
   const getTotalPrice = useCallback(() => {
-    return items.reduce(
-      (total, item) => total + item.product.price * item.quantity,
-      0
-    );
+    return items.reduce((total, item) => total + item.product.price * item.quantity, 0);
   }, [items]);
 
   const value: CartContextType = {
@@ -114,11 +99,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     getTotalPrice,
   };
 
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 // Hook para usar el contexto del carrito

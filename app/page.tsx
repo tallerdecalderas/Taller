@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 import { getFeaturedProducts } from "@/lib/products/product-service";
 import { categories } from "@/lib/data/categories";
 
@@ -93,14 +93,13 @@ export default function Home() {
       <section className="hero-shell">
         <div className="hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow">Servicio técnico de calefacción en Pilar</span>
+            <span className="eyebrow">Servicio técnico de calefacción</span>
             <h1 className="text-shadow-amber-500">
               Somos el mejor servicio técnico de <span>Zona norte</span>
             </h1>
             <p>
-              Instalación, reparación y mantenimiento de calderas, termotanques y
-              sistemas a gas con atención rápida, garantías claras y soluciones
-              pensadas para tu hogar o edificio.
+              Instalación, reparación y mantenimiento de calderas, termotanques y sistemas a gas con
+              atención rápida, garantías claras y soluciones pensadas para tu hogar o edificio.
             </p>
 
             <div className="hero-actions">
@@ -137,10 +136,7 @@ export default function Home() {
             <div className="service-card service-card-primary">
               <span className="service-label">Urgencias</span>
               <h3>Calefacción sin interrupciones</h3>
-              <p>
-                Diagnóstico rápido y solución técnica para hogares, locales y
-                consorcios.
-              </p>
+              <p>Diagnóstico rápido y solución técnica para hogares, locales y consorcios.</p>
             </div>
 
             <div className="stacked-cards">
@@ -154,7 +150,7 @@ export default function Home() {
               </div>
               <div className="mini-card">
                 <span className="mini-bullet" />
-                Cobertura Pilar, Zona norte y CABA 
+                Cobertura Pilar, Zona norte y CABA
               </div>
             </div>
           </div>
@@ -172,7 +168,8 @@ export default function Home() {
             <div className="feature-icon">01</div>
             <h3>Instalación</h3>
             <p>
-              Montaje profesional de calderas, Climatizadores, Paneles solares puesta en marcha segura y eficiente.
+              Montaje profesional de calderas, Climatizadores, Paneles solares puesta en marcha
+              segura y eficiente.
             </p>
           </article>
 
@@ -180,8 +177,8 @@ export default function Home() {
             <div className="feature-icon">02</div>
             <h3>Reparación</h3>
             <p>
-              Detección precisa de fallas, piezas agotadas y desperfectos para
-              volver a operar tu sistema sin demoras.
+              Detección precisa de fallas, piezas agotadas y desperfectos para volver a operar tu
+              sistema sin demoras.
             </p>
           </article>
 
@@ -189,8 +186,8 @@ export default function Home() {
             <div className="feature-icon">03</div>
             <h3>Mantenimiento</h3>
             <p>
-              Revisiones preventivas, limpieza y ajustes para alargar la vida útil
-              y evitar cortes inesperados.
+              Revisiones preventivas, limpieza y ajustes para alargar la vida útil y evitar cortes
+              inesperados.
             </p>
           </article>
         </div>
@@ -234,21 +231,17 @@ export default function Home() {
             <Link key={product.id} href={`/productos/${product.id}`} className="product-card-link">
               <article className="product-card">
                 <div className="product-image-wrap">
-                  <img src={product.image} alt={product.name} className="product-image" />
-                  {!product.available && (
-                    <div className="product-badge">Agotado</div>
-                  )}
+                  <picture>
+                    <img src={product.image} alt={product.name} className="product-image" />
+                    {!product.available && <div className="product-badge">Agotado</div>}
+                  </picture>
                 </div>
                 <div className="product-body">
                   <span className="product-category">{product.category}</span>
                   <h3>{product.name}</h3>
-                  {product.shortDescription && (
-                    <p>{product.shortDescription}</p>
-                  )}
+                  {product.shortDescription && <p>{product.shortDescription}</p>}
                   <div className="product-meta">
-                    <span className="price">
-                      ${product.price.toFixed(2)}
-                    </span>
+                    <span className="price">${product.price.toFixed(2)}</span>
                     <span className={product.available ? "status ok" : "status bad"}>
                       {product.available ? "Disponible" : "Agotado"}
                     </span>
@@ -263,13 +256,8 @@ export default function Home() {
       <section className="cta-band">
         <div className="cta-content">
           <span className="eyebrow eyebrow-cta">Confianza y rapidez</span>
-          <h2>
-            Necesitás resolver una falla o agendar mantenimiento.
-          </h2>
-          <p>
-            Nuestro equipo está listo para ayudarte con la mejor atención del
-            sector en Pilar.
-          </p>
+          <h2>Necesitás resolver una falla o agendar mantenimiento.</h2>
+          <p>Nuestro equipo está listo para ayudarte con la mejor atención del sector en Pilar.</p>
         </div>
 
         <div className="cta-actions">

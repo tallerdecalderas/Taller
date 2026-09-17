@@ -10,27 +10,26 @@ export function CartBadge() {
   return (
     <Link
       href="/cart"
-      className="relative inline-flex items-center px-4 py-2 rounded-lg border-2 border-blue-600 text-blue-600 hover:bg-blue-50 transition font-medium"
+      className="relative inline-flex items-center rounded-lg border-2 border-blue-600 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-50"
     >
       <svg
-        className="w-5 h-5"
+        className="h-5 w-5"
+        viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        viewBox="0 0 24 24"
-        suppressHydrationWarning
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-        />
+        <circle cx="9" cy="20" r="1.5" />
+        <circle cx="18" cy="20" r="1.5" />
+        <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.4L21 8H6" />
       </svg>
       <span className="ml-2 hidden sm:inline">Mi Consulta</span>
 
       {/* Badge con cantidad */}
       {totalItems > 0 && (
-        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+        <span className="absolute top-0 right-0 inline-flex translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-red-600 px-2 py-1 text-xs leading-none font-bold text-white">
           {totalItems}
         </span>
       )}

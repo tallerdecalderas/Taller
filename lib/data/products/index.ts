@@ -1,4 +1,4 @@
-import type { Product } from "@/lib/types/product";
+import type { Product } from "@/types/product";
 import { calderas } from "./calderas";
 import { calderas_restauradas } from "./calderas_restauradas";
 import { repuestos } from "./repuestos";
@@ -18,12 +18,12 @@ export { ventilacion } from "./ventilacion";
 export { repuestosGenericos } from "./repuestos_genericos";
 
 export const products: Product[] = [
-    ...calderas,
-    ...calderas_restauradas,
-    ...repuestos,
-    ...radiadores,
-    ...termostatos,
-    ...accesorios,
-    ...ventilacion,
-    ...repuestosGenericos,
+  ...calderas,
+  ...calderas_restauradas,
+  ...repuestos,
+  ...radiadores,
+  ...termostatos,
+  ...accesorios,
+  ...ventilacion,
+  ...repuestosGenericos,
 ];

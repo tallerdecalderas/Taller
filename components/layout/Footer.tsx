@@ -1,19 +1,17 @@
 import Link from "next/link";
-import { config } from "@/lib/config";
+import { config } from "@/utils/config";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <footer className="bg-gray-900 py-12 text-gray-300">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Información de la empresa */}
           <div>
-            <h3 className="text-white font-bold mb-4">
-              {config.company.name}
-            </h3>
-            <p className="text-sm mb-4">{config.seo.description}</p>
+            <h3 className="mb-4 font-bold text-white">{config.company.name}</h3>
+            <p className="mb-4 text-sm">{config.seo.description}</p>
             <div className="space-y-2 text-sm">
               <p>📧 {config.company.email}</p>
               <p>📱 {config.company.phone}</p>
@@ -22,30 +20,30 @@ export function Footer() {
 
           {/* Links rápidos */}
           <div>
-            <h4 className="text-white font-bold mb-4">Enlaces</h4>
+            <h4 className="mb-4 font-bold text-white">Enlaces</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="hover:text-white transition">
+                <Link href="/" className="transition hover:text-white">
                   Inicio
                 </Link>
               </li>
               <li>
-                <Link href="/productos" className="hover:text-white transition">
+                <Link href="/productos" className="transition hover:text-white">
                   Productos
                 </Link>
               </li>
               <li>
-                <Link href="/donde-comprar" className="hover:text-white transition">
+                <Link href="/donde-comprar" className="transition hover:text-white">
                   Dónde Comprar
                 </Link>
               </li>
               <li>
-                <Link href="/service" className="hover:text-white transition">
+                <Link href="/service" className="transition hover:text-white">
                   Service
                 </Link>
               </li>
               <li>
-                <Link href="/capacitacion" className="hover:text-white transition">
+                <Link href="/capacitacion" className="transition hover:text-white">
                   Capacitación
                 </Link>
               </li>
@@ -54,13 +52,13 @@ export function Footer() {
 
           {/* Categorías */}
           <div>
-            <h4 className="text-white font-bold mb-4">Categorías</h4>
+            <h4 className="mb-4 font-bold text-white">Categorías</h4>
             <ul className="space-y-2 text-sm">
               {config.filters.categories.slice(0, 4).map((category) => (
                 <li key={category}>
                   <Link
                     href={`/productos?category=${category}`}
-                    className="hover:text-white transition"
+                    className="transition hover:text-white"
                   >
                     {category}
                   </Link>
@@ -71,35 +69,79 @@ export function Footer() {
 
           {/* Redes sociales */}
           <div>
-            <h4 className="text-white font-bold mb-4">Conecta con nosotros</h4>
-            <div className="flex space-x-4">
+            <h4 className="mb-4 font-bold text-white">Conecta con nosotros</h4>
+
+            <div className="flex items-center gap-3">
+              {/* WhatsApp */}
               <a
                 href={`https://wa.me/${config.company.whatsappNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-green-500 transition"
+                className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all duration-200 hover:scale-110 hover:bg-green-500/10 hover:text-green-500"
                 title="WhatsApp"
+                aria-label="WhatsApp"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-9.746 9.779c0 2.678.735 5.309 2.126 7.565L2.957 22l8.041-2.11a9.86 9.86 0 004.712 1.2h.005c5.451 0 9.876-4.429 9.876-9.882 0-2.646-.744-5.125-2.162-7.257A9.841 9.841 0 0011.051 6.979" />
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12.004 2C6.48 2 2 6.477 2 11.996c0 1.761.461 3.418 1.269 4.856L2 22l5.3-1.245A9.96 9.96 0 0 0 12.004 22C17.523 22 22 17.52 22 12S17.523 2 12.004 2Zm0 18.22a8.22 8.22 0 0 1-4.19-1.147l-.3-.178-3.147.738.751-3.07-.195-.316a8.22 8.22 0 1 1 7.081 3.973Zm4.51-6.162c-.247-.124-1.465-.723-1.692-.805-.227-.083-.392-.124-.557.124-.165.247-.639.805-.784.97-.144.165-.288.186-.536.062-.247-.124-1.047-.386-1.994-1.23-.737-.657-1.235-1.467-1.38-1.715-.144-.247-.015-.381.109-.505.111-.111.247-.289.371-.433.124-.145.165-.248.248-.413.082-.165.041-.309-.021-.433-.062-.124-.557-1.341-.764-1.837-.202-.483-.406-.417-.557-.425-.144-.007-.309-.009-.474-.009s-.433.062-.66.309c-.227.248-.866.846-.866 2.063s.887 2.393 1.01 2.558c.124.165 1.744 2.662 4.225 3.733.59.255 1.05.408 1.408.522.592.188 1.131.162 1.558.098.475-.071 1.465-.598 1.672-1.176.206-.578.206-1.073.144-1.176-.061-.103-.226-.165-.474-.289Z"
+                  />
                 </svg>
               </a>
+
+              {/* Facebook */}
               <a
-                href="#"
-                className="text-gray-400 hover:text-blue-400 transition"
+                href={config.urls.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all duration-200 hover:scale-110 hover:bg-blue-500/10 hover:text-blue-500"
                 title="Facebook"
+                aria-label="Facebook"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.438H7.078v-3.489h3.047V9.413c0-3.017 1.791-4.685 4.533-4.685 1.312 0 2.686.236 2.686.236v2.973h-1.514c-1.491 0-1.956.929-1.956 1.882v2.254h3.328l-.532 3.489h-2.796V24C19.612 23.094 24 18.1 24 12.073Z" />
                 </svg>
               </a>
+
+              {/* Instagram */}
               <a
-                href="#"
-                className="text-gray-400 hover:text-pink-400 transition"
+                href={config.urls.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-gray-400 transition-all duration-200 hover:scale-110 hover:bg-pink-500/10 hover:text-pink-500"
                 title="Instagram"
+                aria-label="Instagram"
               >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.117.6c-.79.263-1.473.557-2.115 1.194-.657.646-.931 1.35-1.194 2.12-.266.79-.467 1.66-.527 2.94C.058 8.328 0 8.75 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.527 2.913.262.788.556 1.486 1.194 2.12.657.657 1.35.932 2.12 1.194.763.266 1.636.466 2.913.527 1.28.057 1.7.072 4.947.072s3.667-.015 4.947-.072c1.277-.06 2.148-.261 2.913-.527.788-.262 1.486-.556 2.12-1.194.657-.657.932-1.35 1.194-2.12.266-.763.466-1.636.527-2.913.057-1.28.072-1.7.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.261-2.148-.527-2.913-.262-.788-.556-1.486-1.194-2.12-.657-.657-1.35-.932-2.12-1.194-.763-.266-1.636-.466-2.913-.527C15.667.058 15.25 0 12 0zm0 2.16c3.203 0 3.585.009 4.849.07 1.171.06 1.805.246 2.228.408.562.217.96.477 1.382.896.419.42.679.819.896 1.381.163.423.348 1.057.408 2.228.061 1.264.07 1.646.07 4.849s-.009 3.585-.07 4.849c-.06 1.171-.245 1.805-.408 2.228-.217.562-.477.96-.896 1.382-.42.419-.819.679-1.381.896-.423.163-1.057.348-2.228.408-1.264.061-1.646.07-4.849.07s-3.585-.009-4.849-.07c-1.171-.06-1.805-.245-2.228-.408-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.819-.896-1.381-.163-.423-.348-1.057-.408-2.228-.061-1.264-.07-1.646-.07-4.849s.009-3.585.07-4.849c.06-1.171.245-1.805.408-2.228.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.423-.163 1.057-.348 2.228-.408 1.264-.061 1.646-.07 4.849-.07l.045.002z" />
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" />
                 </svg>
               </a>
             </div>
@@ -110,11 +152,11 @@ export function Footer() {
         <div className="border-t border-gray-700 pt-8">
           <p className="text-center text-sm">
             © {year} {config.company.name}. Todos los derechos reservados. |{" "}
-            <Link href="#" className="hover:text-white transition">
+            <Link href="#" className="transition hover:text-white">
               Términos de Servicio
             </Link>{" "}
             |{" "}
-            <Link href="#" className="hover:text-white transition">
+            <Link href="#" className="transition hover:text-white">
               Política de Privacidad
             </Link>
           </p>

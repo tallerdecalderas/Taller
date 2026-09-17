@@ -26,9 +26,9 @@ export function SearchBar({
 
   return (
     <div className="relative">
-      <div className="flex items-center bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 focus-within:ring-2 focus-within:ring-blue-500">
+      <div className="flex items-center overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md focus-within:ring-2 focus-within:ring-blue-500">
         <svg
-          className="w-5 h-5 text-gray-400 ml-4"
+          className="ml-4 h-5 w-5 text-gray-400"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -45,12 +45,12 @@ export function SearchBar({
           value={searchTerm}
           onChange={handleChange}
           placeholder={placeholder}
-          className="flex-1 px-4 py-3 outline-none text-gray-900 placeholder-gray-500"
+          className="flex-1 px-4 py-3 text-gray-900 placeholder-gray-500 outline-none"
         />
         {searchTerm && (
           <button
             onClick={handleClear}
-            className="px-4 py-3 text-gray-400 hover:text-gray-600 transition"
+            className="px-4 py-3 text-gray-400 transition hover:text-gray-600"
             title="Limpiar búsqueda"
           >
             ✕
