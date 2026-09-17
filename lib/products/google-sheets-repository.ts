@@ -1,4 +1,4 @@
-import type { Product, ProductBrand, ProductCategory } from "@/lib/types/product";
+import type { Product, ProductBrand, ProductCategory } from "@/types/product";
 import { StaticProductRepository } from "./static-product-repository";
 import type { ProductRepository } from "./product-repository";
 import {

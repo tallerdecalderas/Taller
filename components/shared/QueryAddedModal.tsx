@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import type { Product } from "@/lib/types/product";
+import type { Product } from "@/types/product";
 
 interface QueryAddedModalProps {
   product: Product;
@@ -38,7 +38,7 @@ export function QueryAddedModal({ product, quantity, onClose }: QueryAddedModalP
         aria-modal="true"
         aria-labelledby="query-added-title"
       >
-        <div className="bg-gradient-to-r from-slate-900 to-slate-800 px-6 py-5 text-white">
+        <div className="bg-linear-to-r from-slate-900 to-slate-800 px-6 py-5 text-white">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-2xl text-amber-300">
@@ -55,7 +55,10 @@ export function QueryAddedModal({ product, quantity, onClose }: QueryAddedModalP
             </div>
             <button
               type="button"
-              onClick={onClose}
+              onClick={(event) => {
+                event.stopPropagation();
+                onClose();
+              }}
               className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-2xl leading-none text-slate-300 transition hover:bg-white/10 hover:text-white"
               aria-label="Cerrar confirmación"
             >
@@ -78,14 +81,20 @@ export function QueryAddedModal({ product, quantity, onClose }: QueryAddedModalP
           <div className="flex flex-col gap-3 sm:flex-row-reverse">
             <Link
               href="/consulta"
-              onClick={onClose}
+              onClick={(event) => {
+                event.stopPropagation();
+                onClose();
+              }}
               className="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-blue-600 px-4 py-3 text-center text-sm font-bold text-white transition hover:bg-blue-700"
             >
               Ver Mi Consulta
             </Link>
             <button
               type="button"
-              onClick={onClose}
+              onClick={(event) => {
+                event.stopPropagation();
+                onClose();
+              }}
               className="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl border border-slate-300 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
             >
               Seguir viendo

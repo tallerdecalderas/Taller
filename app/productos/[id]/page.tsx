@@ -91,11 +91,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {relatedProducts.map((relatedProduct) => (
                 <Link key={relatedProduct.id} href={`/productos/${relatedProduct.id}`}>
                   <div className="cursor-pointer overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg">
-                    <div className="relative h-40 w-full bg-gray-200">
+                    <div className="relative h-40 w-full bg-white">
                       <img
                         src={relatedProduct.image}
                         alt={relatedProduct.name}
-                        className="h-full w-full object-cover transition-transform hover:scale-105"
+                        className="h-full w-full object-contain transition-transform hover:scale-105"
                       />
                     </div>
                     <div className="p-4">

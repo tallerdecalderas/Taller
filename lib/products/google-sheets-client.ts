@@ -1,4 +1,4 @@
-import type { Product, ProductBrand, ProductCategory, ProductSpecs } from "@/lib/types/product";
+import type { Product, ProductBrand, ProductCategory, ProductSpecs } from "@/types/product";
 
 export type GoogleSheetRow = Record<string, string | undefined>;
 

@@ -1,5 +1,5 @@
 import { products as staticProducts } from "@/lib/data/products";
-import type { Product, ProductBrand, ProductCategory } from "@/lib/types/product";
+import type { Product, ProductBrand, ProductCategory } from "@/types/product";
 import type { ProductRepository } from "./product-repository";
 
 export class StaticProductRepository implements ProductRepository {

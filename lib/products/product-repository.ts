@@ -1,4 +1,4 @@
-import type { Product, ProductBrand, ProductCategory } from "@/lib/types/product";
+import type { Product, ProductBrand, ProductCategory } from "@/types/product";
 
 export interface ProductRepository {
   getProducts(): Product[];

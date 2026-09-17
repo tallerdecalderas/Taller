@@ -7,6 +7,7 @@ export const config = {
     whatsappCountryCode: "AR",
     email: "tallerdecalderasoficial@gmail.com",
     phone: "1125699615",
+    whatsappAulaClima: "1126232363",
   },
 
   locations: [

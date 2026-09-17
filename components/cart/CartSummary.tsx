@@ -1,6 +1,6 @@
 "use client";
 
-import { CartItem } from "@/lib/types/product";
+import { CartItem } from "@/types/product";
 import Link from "next/link";
 
 interface CartSummaryProps {

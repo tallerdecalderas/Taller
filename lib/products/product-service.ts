@@ -3,7 +3,7 @@
  * Mantiene la API actual intacta y delega la fuente de datos en un repository.
  */
 
-import type { Product, ProductBrand, ProductCategory, ProductFilters } from "@/lib/types/product";
+import type { Product, ProductBrand, ProductCategory, ProductFilters } from "@/types/product";
 import type { ProductRepository } from "./product-repository";
 import { StaticProductRepository } from "./static-product-repository";
 import { GoogleSheetsProductRepository } from "./google-sheets-repository";

@@ -6,7 +6,7 @@
  * Preferir usar filterProducts() de product-service.ts
  */
 
-import type { Product, ProductFilters } from "@/lib/types/product";
+import type { Product, ProductFilters } from "@/types/product";
 // import { filterProducts } from "@/lib/products/product-service";
 /**
  * Filtrar productos por búsqueda de texto

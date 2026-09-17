@@ -2,7 +2,7 @@
  * Utilidades para generar mensajes de WhatsApp
  */
 
-import { CartItem } from "@/lib/types/product";
+import { CartItem } from "@/types/product";
 import { config } from "@/utils/config";
 
 /**

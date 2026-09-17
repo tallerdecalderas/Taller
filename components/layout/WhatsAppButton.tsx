@@ -1,6 +1,6 @@
 "use client";
 
-import { Product } from "@/lib/types/product";
+import { Product } from "@/types/product";
 import { useCart } from "@/context/CartContext";
 import { generateSingleProductMessage, openWhatsApp } from "@/lib/whatsapp";
 import { QueryAddedModal } from "@/components/shared/QueryAddedModal";

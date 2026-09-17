@@ -13,7 +13,7 @@ import {
 import { ProductCard } from "@/components/productos/ProductCard";
 import { SearchBar } from "@/components/productos/SearchBar";
 import { FilterPanel } from "@/components/productos/FilterPanel";
-import type { ProductBrand, ProductCategory, ProductFilters } from "@/lib/types/product";
+import type { ProductBrand, ProductCategory, ProductFilters } from "@/types/product";
 
 function ProductsContent() {
   const searchParams = useSearchParams();

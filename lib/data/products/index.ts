@@ -1,4 +1,4 @@
-import type { Product } from "@/lib/types/product";
+import type { Product } from "@/types/product";
 import { calderas } from "./calderas";
 import { calderas_restauradas } from "./calderas_restauradas";
 import { repuestos } from "./repuestos";
