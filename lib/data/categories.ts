@@ -11,8 +11,8 @@ export const categories = [
     icon: "boiler",
   },
   {
-    id: "calderas_restauradas",
-    name: "Calderas Restauradas",
+    id: "calderas_de_outlets",
+    name: "Calderas de outlets",
     icon: "recycle",
   },
   {

@@ -22,7 +22,7 @@ function ProductsContent() {
   const brands = getAllBrands();
   const quickCategoryLinks = [
     { id: "calderas", label: "Calderas" },
-    { id: "calderas_restauradas", label: "Calderas restauradas" },
+    { id: "calderas_de_outlets", label: "Calderas de outlets" },
     { id: "repuestos_genericos", label: "Repuestos genericos" },
     { id: "repuestos", label: "Repuestos" },
     { id: "termostatos", label: "Termostatos" },
