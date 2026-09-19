@@ -26,6 +26,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(config.urls.base),
   icons: {
     icon: "/taller_de_calderas_favicon.ico",
   },

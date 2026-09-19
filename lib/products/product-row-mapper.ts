@@ -19,7 +19,7 @@ import type {
   ProductService,
   ProductSpecs,
   ProductTechnology,
-} from "@/lib/types/product";
+} from "@/types/product";
 
 export type ProductSheetRow = Record<string, string | undefined>;
 
