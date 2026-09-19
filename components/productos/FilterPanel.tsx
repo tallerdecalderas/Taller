@@ -19,7 +19,7 @@ export function FilterPanel({
   selectedCategory,
   selectedBrand,
 }: FilterPanelProps) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="space-y-4 md:space-y-6">
@@ -41,7 +41,7 @@ export function FilterPanel({
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-sm font-semibold text-blue-600 hover:text-blue-700 md:hidden"
+          className="text-sm font-semibold text-blue-600 hover:text-blue-700"
         >
           {isOpen ? "Ocultar" : "Mostrar"}
         </button>

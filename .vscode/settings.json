@@ -1,39 +1,16 @@
 {
-  // Formateo al guardar (Ctrl+S / Cmd+S)
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-
-  "javascript.validate.enable": false,
-
-  // Prettier como formateador por lenguaje
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "vscode.typescript-language-features",
+  "javascript.validate.enable": false, // Desactiva la validación por defecto de JS
+  "standard.enable": true, // Activa standardjs
+  "standard.autoFixOnSave": true, // Aplica auto-fix al guardar
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "standard.vscode-standard"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "standard.vscode-standard",
+    "editor.formatOnSave": true
   },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-
   "json.schemas": [],
   "vsicons.presets.jsOfficial": false,
 
@@ -44,8 +21,8 @@
     "editor.selectionBackground": "#0d1930",
     "list.activeSelectionBackground": "#1a2c3c",
     "list.activeSelectionForeground": "#7eb8d7",
-    "list.inactiveSelectionBackground": "#08163b",
-    "list.inactiveSelectionForeground": "#0f2d51",
+    "list.inactiveSelectionBackground": "#21454b",
+    "list.inactiveSelectionForeground": "#e3eaf3",
     "activityBar.activeBackground": "#294660",
     "activityBar.background": "#294660",
     "activityBar.foreground": "#e7e7e7",

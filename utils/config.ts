@@ -39,7 +39,7 @@ export const config = {
   filters: {
     categories: [
       "Calderas",
-      "Calderas Restauradas",
+      "Calderas de outlets",
       "Repuestos Genéricos",
       "Termostatos",
       "Radiadores",

@@ -85,8 +85,8 @@ function CategoryIcon({ type }: { type: string }) {
   }
 }
 
-export default function Home() {
-  const featuredProducts = getFeaturedProducts(6);
+export default async function Home() {
+  const featuredProducts = await getFeaturedProducts(6);
 
   return (
     <div className="landing-page">
@@ -94,9 +94,7 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-copy">
             <span className="eyebrow">Servicio técnico de calefacción</span>
-            <h1 className="text-shadow-amber-500">
-              Somos el mejor servicio técnico de <span>Zona norte</span>
-            </h1>
+            <h1 className="text-shadow-amber-500">Somos el mejor servicio técnico de Zona norte</h1>
             <p>
               Instalación, reparación y mantenimiento de calderas, termotanques y sistemas a gas con
               atención rápida, garantías claras y soluciones pensadas para tu hogar o edificio.
@@ -142,15 +140,15 @@ export default function Home() {
             <div className="stacked-cards">
               <div className="mini-card">
                 <span className="mini-bullet" />
-                Técnicos matriculados
+                Capacitaciones
               </div>
               <div className="mini-card">
                 <span className="mini-bullet" />
-                Repuestos originales
+                Venta de repuestos y accesorios
               </div>
               <div className="mini-card">
                 <span className="mini-bullet" />
-                Cobertura Pilar, Zona norte y CABA
+                Cobertura Zona norte y CABA
               </div>
             </div>
           </div>

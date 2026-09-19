@@ -4,7 +4,7 @@
 
 export type ProductCategory =
   | "calderas"
-  | "calderas_restauradas"
+  | "calderas_de_outlets"
   | "repuestos_genericos"
   | "repuestos"
   | "termostatos"
