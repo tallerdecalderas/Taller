@@ -85,8 +85,8 @@ function CategoryIcon({ type }: { type: string }) {
   }
 }
 
-export default function Home() {
-  const featuredProducts = getFeaturedProducts(6);
+export default async function Home() {
+  const featuredProducts = await getFeaturedProducts(6);
 
   return (
     <div className="landing-page">

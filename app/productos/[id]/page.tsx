@@ -12,7 +12,7 @@ interface ProductPageProps {
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = getProductById(id);
+  const product = await getProductById(id);
 
   if (!product) {
     return {
@@ -39,22 +39,24 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
-export function generateStaticParams() {
-  return getProducts().map((product) => ({
+export async function generateStaticParams() {
+  const products = await getProducts();
+
+  return products.map((product) => ({
     id: product.id,
   }));
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = getProductById(id);
+  const product = await getProductById(id);
 
   if (!product) {
     notFound();
   }
 
   // Productos relacionados (misma categoría)
-  const relatedProducts = getProductsByCategory(product.category)
+  const relatedProducts = (await getProductsByCategory(product.category))
     .filter((p) => p.id !== product.id)
     .slice(0, 4);
 
