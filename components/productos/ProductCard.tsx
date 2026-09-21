@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Product } from "@/types/product";
 import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/utils/formatMoney";
 
 interface ProductCardProps {
   product: Product;
@@ -80,7 +81,7 @@ export function ProductCard({ product }: ProductCardProps) {
           {/* Precio y Botón */}
           <div className="mt-auto flex flex-col gap-3 border-t pt-3">
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-blue-600">${product.price.toFixed(2)}</span>
+              <span className="text-2xl font-bold text-blue-600">{formatCurrency(product.price)}</span>
               <span
                 className={`text-sm font-semibold ${
                   product.available ? "text-green-600" : "text-red-600"

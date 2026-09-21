@@ -7,6 +7,7 @@ import { QuantitySelector } from "../shared/QuantitySelector";
 import { QueryAddedModal } from "../shared/QueryAddedModal";
 import { config } from "@/utils/config";
 import { useCart } from "@/context/CartContext";
+import { formatCurrency } from "@/utils/formatMoney";
 
 interface ProductDetailProps {
   product: Product;
@@ -27,7 +28,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
   };
 
   const handleWhatsAppClick = () => {
-    const message = `Hola, me interesa el producto "${product.name}" (CODE: ${product.code}). Cantidad: ${quantity}. Precio unitario: $${product.price.toFixed(2)}. Total: $${(product.price * quantity).toFixed(2)}`;
+    const message = `Hola, me interesa el producto "${product.name}" (CODE: ${product.code}). Cantidad: ${quantity}. Precio unitario: ${formatCurrency(product.price)}. Total: ${formatCurrency(product.price * quantity)}`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${config.company.whatsappNumber}?text=${encodedMessage}`;
@@ -132,10 +133,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
           {/* Precio */}
           <div className="mb-8 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 p-6">
             <p className="mb-2 text-gray-600">Precio unitario</p>
-            <p className="mb-3 text-4xl font-bold text-blue-600">${product.price.toFixed(2)}</p>
+            <p className="mb-3 text-4xl font-bold text-blue-600">{formatCurrency(product.price)}</p>
             <p className="text-gray-700">
               Total por {quantity} {quantity === 1 ? "unidad" : "unidades"}:{" "}
-              <span className="text-lg font-bold">${(product.price * quantity).toFixed(2)}</span>
+              <span className="text-lg font-bold">{formatCurrency(product.price * quantity)}</span>
             </p>
           </div>
 

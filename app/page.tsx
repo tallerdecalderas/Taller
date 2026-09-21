@@ -2,6 +2,7 @@ import Link from "next/link";
 import { config } from "@/utils/config";
 import { getFeaturedProducts } from "@/lib/products/product-service";
 import { categories } from "@/lib/data/categories";
+import { formatCurrency } from "@/utils/formatMoney";
 
 function CategoryIcon({ type }: { type: string }) {
   const commonProps = {
@@ -239,7 +240,7 @@ export default async function Home() {
                   <h3>{product.name}</h3>
                   {product.shortDescription && <p>{product.shortDescription}</p>}
                   <div className="product-meta">
-                    <span className="price">${product.price.toFixed(2)}</span>
+                    <span className="price">{formatCurrency(product.price)}</span>
                     <span className={product.available ? "status ok" : "status bad"}>
                       {product.available ? "Disponible" : "Agotado"}
                     </span>

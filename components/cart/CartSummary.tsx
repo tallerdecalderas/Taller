@@ -2,6 +2,7 @@
 
 import { CartItem } from "@/types/product";
 import Link from "next/link";
+import { formatCurrency } from "@/utils/formatMoney";
 
 interface CartSummaryProps {
   items: CartItem[];
@@ -70,7 +71,7 @@ export function CartSummary({
                 {item.product.name}
               </Link>
               <p className="text-sm text-gray-600">CODE: {item.product.code}</p>
-              <p className="mt-1 font-bold text-blue-600">${item.product.price.toFixed(2)}</p>
+              <p className="mt-1 font-bold text-blue-600">{formatCurrency(item.product.price)}</p>
             </div>
 
             {/* Cantidad y acciones */}
@@ -93,7 +94,7 @@ export function CartSummary({
               </div>
 
               <p className="font-bold text-gray-900">
-                ${(item.product.price * item.quantity).toFixed(2)}
+                {formatCurrency(item.product.price * item.quantity)}
               </p>
 
               <button
@@ -117,7 +118,7 @@ export function CartSummary({
         </div>
         <div className="flex items-center justify-between border-t border-blue-200 pt-4">
           <span className="text-lg font-bold text-gray-900">Total:</span>
-          <span className="text-3xl font-bold text-blue-600">${total.toFixed(2)}</span>
+          <span className="text-3xl font-bold text-blue-600">{formatCurrency(total)}</span>
         </div>
       </div>
 
