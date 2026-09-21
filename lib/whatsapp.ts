@@ -4,6 +4,7 @@
 
 import { CartItem } from "@/types/product";
 import { config } from "@/utils/config";
+import { formatCurrency } from "@/utils/formatMoney";
 
 /**
  * Generar mensaje de WhatsApp formateado
@@ -25,11 +26,11 @@ export function generateWhatsAppMessage(items: CartItem[]): string {
     message += `${index + 1}. *${item.product.name}*\n`;
     message += `   CODE: ${item.product.code}\n`;
     message += `   Cantidad: ${item.quantity}\n`;
-    message += `   Precio unitario: $${item.product.price.toFixed(2)}\n`;
-    message += `   Subtotal: $${subtotal.toFixed(2)}\n\n`;
+    message += `   Precio unitario: ${formatCurrency(item.product.price)}\n`;
+    message += `   Subtotal: ${formatCurrency(subtotal)}\n\n`;
   });
 
-  message += `*Total: $${total.toFixed(2)}*\n\n`;
+  message += `*Total: ${formatCurrency(total)}*\n\n`;
   message += "Favor confirmar disponibilidad y hacer presupuesto.";
 
   return message;
@@ -61,5 +62,5 @@ export function generateSingleProductMessage(
   price: number,
   quantity: number,
 ): string {
-  return `Hola, me interesa el producto "${productName}" (CODE: ${code}). Cantidad: ${quantity}. Precio unitario: $${price.toFixed(2)}. Total: $${(price * quantity).toFixed(2)}`;
+  return `Hola, me interesa el producto "${productName}" (CODE: ${code}). Cantidad: ${quantity}. Precio unitario: ${formatCurrency(price)}. Total: ${formatCurrency(price * quantity)}`;
 }

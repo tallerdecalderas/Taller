@@ -3,6 +3,7 @@ import { getProductById, getProducts, getProductsByCategory } from "@/lib/produc
 import { ProductDetail } from "@/components/productos/ProductDetail";
 import Link from "next/link";
 import { Metadata } from "next";
+import { formatCurrency } from "@/utils/formatMoney";
 
 interface ProductPageProps {
   params: Promise<{
@@ -105,7 +106,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         {relatedProduct.name}
                       </h3>
                       <p className="text-2xl font-bold text-blue-600">
-                        ${relatedProduct.price.toFixed(2)}
+                        {formatCurrency(relatedProduct.price)}
                       </p>
                     </div>
                   </div>

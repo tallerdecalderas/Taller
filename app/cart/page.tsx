@@ -5,6 +5,7 @@ import { useCart } from "@/context/CartContext";
 import { CartSummary } from "@/components/cart/CartSummary";
 import { QueryAddedModal } from "@/components/shared/QueryAddedModal";
 import { generateWhatsAppMessage, openWhatsApp } from "@/lib/whatsapp";
+import { formatCurrency } from "@/utils/formatMoney";
 import { useState } from "react";
 
 export default function CartPage() {
@@ -70,10 +71,9 @@ export default function CartPage() {
                     <div className="flex justify-between text-lg font-bold text-blue-600">
                       <span>Total:</span>
                       <span>
-                        $
-                        {items
-                          .reduce((sum, item) => sum + item.product.price * item.quantity, 0)
-                          .toFixed(2)}
+                        {formatCurrency(
+                          items.reduce((sum, item) => sum + item.product.price * item.quantity, 0),
+                        )}
                       </span>
                     </div>
                   </div>

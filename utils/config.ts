@@ -22,7 +22,7 @@ export const config = {
   ],
 
   sound: {
-    enabled: true,
+    enabled: false,
     src: "/sound/sonido.m4a",
     volume: 0.72,
   },
