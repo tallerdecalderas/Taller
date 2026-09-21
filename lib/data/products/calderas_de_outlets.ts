@@ -1,8 +1,10 @@
 import type { Product } from "@/types/product";
+import { createProducts } from "@/lib/createProducts";
 
-export const calderas_de_outlets: Product[] = [
+type ProductInput = Omit<Product, "id">;
+
+const rawCalderasDeOutlets: ProductInput[] = [
   {
-    id: "cr-1",
     code: "REST-BAXI-ECO4S",
     name: "Caldera BAXI Eco 4S de outlets",
     description:
@@ -24,3 +26,8 @@ export const calderas_de_outlets: Product[] = [
     },
   },
 ];
+
+export const calderas_de_outlets: Product[] = rawCalderasDeOutlets.map((p, i) => ({
+  id: `${p.category}-${i}`,
+  ...p,
+}));
