@@ -10,7 +10,7 @@
 
 import { brands } from "@/lib/data/brands";
 import { categories } from "@/lib/data/categories";
-import { normalizeHeader } from "./csv";
+import { normalizeHeader } from "@/lib/products/csv";
 import type {
   GasType,
   Product,
@@ -19,7 +19,7 @@ import type {
   ProductService,
   ProductSpecs,
   ProductTechnology,
-} from "@/lib/types/product";
+} from "@/types/product";
 
 export type ProductSheetRow = Record<string, string | undefined>;
 

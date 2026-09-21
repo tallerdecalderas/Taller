@@ -20,7 +20,7 @@ No usa la API de Google ni credenciales. Sólo requiere que la hoja esté públi
 
 ```bash
 PRODUCT_DATA_SOURCE=public-sheet
-PUBLIC_SHEET_ID=<id de la planilla>
+PUBLIC_SHEET_ID=<id de la planilla o URL completa>
 ```
 
 Variables opcionales:
@@ -31,7 +31,7 @@ Variables opcionales:
 | `PUBLIC_SHEET_GID`      | `gid` de la pestaña. Si se define, tiene prioridad sobre el nombre. |
 | `PUBLIC_SHEET_CSV_URL`  | URL CSV completa. Ignora todas las anteriores.                     |
 
-El ID es lo que aparece entre `/d/` y `/edit` en la URL de la planilla:
+El ID es lo que aparece entre `/d/` y `/edit` en la URL de la planilla. También se acepta la URL completa:
 
 ```
 https://docs.google.com/spreadsheets/d/1lZVBhk2XAXsZFa9x-DQ7ryLLXA4bjs7_6ZePpiX6mIs/edit
