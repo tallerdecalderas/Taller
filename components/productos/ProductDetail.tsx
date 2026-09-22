@@ -19,10 +19,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
   const { addItem } = useCart();
 
   const handleAddToCart = () => {
-    if (!product.available) {
-      return;
-    }
-
     addItem(product, quantity);
     setShowAddedModal(true);
   };
@@ -50,11 +46,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            {!product.available && (
-              <div className="bg-opacity-50 absolute inset-0 flex items-center justify-center bg-black">
-                <span className="text-2xl font-bold text-white">Agotado</span>
-              </div>
-            )}
           </div>
 
           {/* Información adicional de imágenes si existen */}
@@ -80,17 +71,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
         {/* Detalles del producto */}
         <div className="flex flex-col">
-          {/* Categoría y disponibilidad */}
+          {/* Categoría */}
           <div className="mb-4 flex items-center gap-4">
             <span className="inline-block rounded bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-800">
               {product.category}
-            </span>
-            <span
-              className={`text-sm font-semibold ${
-                product.available ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {product.available ? "✓ Disponible" : "✗ Agotado"}
             </span>
           </div>
 
@@ -120,18 +104,8 @@ export function ProductDetail({ product }: ProductDetailProps) {
             </div>
           )}
 
-          {/* Stock */}
-          {product.stock !== undefined && (
-            <div className="mb-6 rounded-lg bg-blue-50 p-4">
-              <p className="text-sm text-gray-600">
-                Stock disponible:{" "}
-                <span className="font-bold text-blue-600">{product.stock} unidades</span>
-              </p>
-            </div>
-          )}
-
           {/* Precio */}
-          <div className="mb-8 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 p-6">
+          <div className="mb-8 rounded-lg bg-linear-to-r from-blue-50 to-purple-50 p-6">
             <p className="mb-2 text-gray-600">Precio unitario</p>
             <p className="mb-3 text-4xl font-bold text-blue-600">{formatCurrency(product.price)}</p>
             <p className="text-gray-700">
@@ -142,23 +116,14 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
           {/* Selector de cantidad */}
           <div className="mb-8">
-            <QuantitySelector
-              max={product.stock || 100}
-              initialQuantity={quantity}
-              onQuantityChange={setQuantity}
-            />
+            <QuantitySelector max={100} initialQuantity={quantity} onQuantityChange={setQuantity} />
           </div>
 
           {/* Botones de acción */}
           <div className="space-y-3">
             <button
               onClick={handleAddToCart}
-              disabled={!product.available}
-              className={`flex w-full items-center justify-center gap-2 rounded-lg px-6 py-4 font-bold text-white transition ${
-                product.available
-                  ? "cursor-pointer bg-blue-600 hover:bg-blue-700"
-                  : "cursor-not-allowed bg-gray-400 opacity-50"
-              }`}
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-4 font-bold text-white transition hover:bg-blue-700"
             >
               <svg
                 className="h-6 w-6"
@@ -178,12 +143,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
             <button
               onClick={handleWhatsAppClick}
-              disabled={!product.available}
-              className={`flex w-full items-center justify-center gap-2 rounded-lg px-6 py-4 font-bold text-white transition ${
-                product.available
-                  ? "cursor-pointer bg-green-500 hover:bg-green-600"
-                  : "cursor-not-allowed bg-gray-400 opacity-50"
-              }`}
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-green-500 px-6 py-4 font-bold text-white transition hover:bg-green-600"
             >
               <svg
                 className="h-6 w-6 shrink-0"
@@ -196,12 +156,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
               </svg>
               Enviar por WhatsApp
             </button>
-
-            {!product.available && (
-              <div className="w-full rounded-lg bg-gray-100 px-6 py-3 text-center font-medium text-gray-600">
-                Producto agotado
-              </div>
-            )}
           </div>
 
           {/* Información adicional */}

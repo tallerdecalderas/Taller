@@ -235,8 +235,6 @@ export function mapSheetRowToProduct(row: ProductSheetRow): Product | null {
     category,
     image: readField(row, "image") ?? "/placeholder-product.png",
     images: parseList(readField(row, "images"), ";"),
-    available: parseOptionalBoolean(readField(row, "available")) ?? false,
-    stock: parseNumberValue(readField(row, "stock")),
     tags: parseList(readField(row, "tags"), ","),
     featured: parseOptionalBoolean(readField(row, "featured")) ?? false,
     specs: buildSpecs(row),

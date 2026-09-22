@@ -84,8 +84,6 @@ export function mapGoogleSheetRowToProduct(row: GoogleSheetRow): Product | null 
       ?.split(";")
       .map((item) => item.trim())
       .filter(Boolean),
-    available: row.available?.trim().toLowerCase() === "true",
-    stock: parseOptionalNumber(row.stock),
     tags: parseCommaSeparatedValues(row.tags),
     featured: row.featured?.trim().toLowerCase() === "true",
     specs,

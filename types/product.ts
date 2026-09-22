@@ -12,7 +12,7 @@ export type ProductCategory =
   | "ventilacion"
   | "accesorios";
 
-export type ProductBrand = "BAXI" | "PEISA" | "GENÉRICO";
+export type ProductBrand = "BAXI" | "PEISA" | "GENÉRICO" | "ARISTON" | "ASUA";
 
 export type GasType = "GN" | "GL" | "GN/GL";
 
@@ -51,7 +51,7 @@ export interface Product {
   description: string;
   shortDescription?: string;
 
-  price: number;
+  price?: number;
 
   brand: ProductBrand;
   category: ProductCategory;
@@ -59,11 +59,9 @@ export interface Product {
   image: string;
   images?: string[];
 
-  available: boolean;
-  code: string;
+  code?: string;
 
   tags?: string[];
-  stock?: number;
 
   specs?: ProductSpecs;
 
@@ -91,3 +89,5 @@ export interface WhatsAppMessage {
   phoneNumber: string;
   message: string;
 }
+
+export type ProductInput = Omit<Product, "id">;

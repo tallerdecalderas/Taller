@@ -68,7 +68,9 @@ export async function fetchPublicSheetRows(): Promise<ProductSheetRow[]> {
   const url = buildPublicSheetCsvUrl();
 
   if (!url) {
-    throw new Error("No hay una hoja pública configurada (PUBLIC_SHEET_ID o PUBLIC_SHEET_CSV_URL).");
+    throw new Error(
+      "No hay una hoja pública configurada (PUBLIC_SHEET_ID o PUBLIC_SHEET_CSV_URL).",
+    );
   }
 
   const isProduction = process.env.NODE_ENV === "production";
@@ -92,9 +94,7 @@ export async function fetchPublicSheetRows(): Promise<ProductSheetRow[]> {
     const contentType = response.headers.get("content-type") ?? "";
 
     if (contentType.includes("text/html")) {
-      throw new Error(
-        "La hoja no es pública. Compartila como 'Cualquiera con el enlace: Lector'.",
-      );
+      throw new Error("La hoja no es pública. Compartila como 'Cualquiera con el enlace: Lector'.");
     }
 
     const csv = await response.text();

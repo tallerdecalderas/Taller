@@ -17,6 +17,10 @@ export const brands = [
     id: "GENÉRICO",
     name: "Genéricos",
   },
+  {
+    id: "ARISTON",
+    name: "ARISTON",
+  }
 ] as const;
 
 export type BrandId = (typeof brands)[number]["id"];

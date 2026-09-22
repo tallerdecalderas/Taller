@@ -19,8 +19,6 @@ export function ProductCard({ product }: ProductCardProps) {
     e.preventDefault();
     e.stopPropagation();
 
-    if (!product.available) return;
-
     setIsAdding(true);
     addItem(product, 1);
 
@@ -40,16 +38,6 @@ export function ProductCard({ product }: ProductCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority={false}
           />
-          {!product.available && (
-            <div className="bg-opacity-50 absolute inset-0 flex items-center justify-center bg-black">
-              <span className="text-lg font-bold text-white">Agotado</span>
-            </div>
-          )}
-          {product.stock && product.stock < 5 && product.available && (
-            <div className="absolute top-2 right-2 rounded bg-red-500 px-2 py-1 text-xs font-bold text-white">
-              ¡Solo {product.stock}!
-            </div>
-          )}
         </div>
 
         {/* Contenido */}
@@ -64,8 +52,8 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.name}
           </h3>
 
-          {/* CODE */}
-          <p className="mb-3 text-xs text-gray-500">CODE: {product.code}</p>
+          {/* CODE
+          <p className="mb-3 text-xs text-gray-500">CODE: {product.code}</p> */}
 
           {/* Tags */}
           {product.tags && product.tags.length > 0 && (
@@ -81,26 +69,19 @@ export function ProductCard({ product }: ProductCardProps) {
           {/* Precio y Botón */}
           <div className="mt-auto flex flex-col gap-3 border-t pt-3">
             <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-blue-600">{formatCurrency(product.price)}</span>
-              <span
-                className={`text-sm font-semibold ${
-                  product.available ? "text-green-600" : "text-red-600"
-                }`}
-              >
-                {product.available ? "Disponible" : "No disponible"}
+              <span className="text-2xl font-bold text-blue-600">
+                {formatCurrency(product.price)}
               </span>
             </div>
 
             {/* Botón Agregar a la consulta*/}
             <button
               onClick={handleAddToCart}
-              disabled={!product.available || isAdding}
+              disabled={isAdding}
               className={`w-full rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 ${
-                product.available
-                  ? isAdding
-                    ? "scale-[0.98] bg-green-600 text-white"
-                    : "bg-blue-600 text-white hover:bg-blue-700 active:scale-[0.98]"
-                  : "cursor-not-allowed bg-gray-300 text-gray-500"
+                isAdding
+                  ? "scale-[0.98] bg-green-600 text-white"
+                  : "bg-blue-600 text-white hover:bg-blue-700 active:scale-[0.98]"
               }`}
             >
               {isAdding ? "✓ Agregado" : "Agregar"}

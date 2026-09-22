@@ -1,8 +1,8 @@
 import type { Product } from "@/types/product";
+import type { ProductInput } from "@/types/product";
 
-export const repuestos: Product[] = [
+const rawRepuestos: ProductInput[] = [
   {
-    id: "11",
     code: "BAXI-FLUJO-ECO4S",
     name: "Flujostato BAXI Eco 4S / Eco 5",
     description:
@@ -11,8 +11,6 @@ export const repuestos: Product[] = [
     brand: "BAXI",
     category: "repuestos",
     price: 158400,
-    stock: 5,
-    available: true,
     image:
       "https://s.alicdn.com/%40sc04/kf/H1d629388ca764d4d9cf0d2298be494d0B/Ferroli-Beretta-Immergas-Gas-Boilers-Spare-Parts-Plastic-Water-Flow-Sensor-Switch-Pressure-Relief-Port-Replacement-for-Water.png",
     tags: ["Flujostato", "Eco 4S", "Eco 5", "Repuesto original"],
@@ -21,3 +19,8 @@ export const repuestos: Product[] = [
     },
   },
 ];
+
+export const repuestos: Product[] = rawRepuestos.map((p, i) => ({
+  id: `${p.category}-${i}`,
+  ...p,
+}));

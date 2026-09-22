@@ -232,7 +232,6 @@ export default async function Home() {
                 <div className="product-image-wrap">
                   <picture>
                     <img src={product.image} alt={product.name} className="product-image" />
-                    {!product.available && <div className="product-badge">Agotado</div>}
                   </picture>
                 </div>
                 <div className="product-body">
@@ -241,9 +240,6 @@ export default async function Home() {
                   {product.shortDescription && <p>{product.shortDescription}</p>}
                   <div className="product-meta">
                     <span className="price">{formatCurrency(product.price)}</span>
-                    <span className={product.available ? "status ok" : "status bad"}>
-                      {product.available ? "Disponible" : "Agotado"}
-                    </span>
                   </div>
                 </div>
               </article>

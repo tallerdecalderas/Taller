@@ -113,11 +113,3 @@ export async function searchProducts(query: string): Promise<Product[]> {
 export async function getProductCount(): Promise<number> {
   return (await getProducts()).length;
 }
-
-export async function getAvailableProducts(): Promise<Product[]> {
-  return (await getProducts()).filter((product) => product.available);
-}
-
-export async function getUnavailableProducts(): Promise<Product[]> {
-  return (await getProducts()).filter((product) => !product.available);
-}

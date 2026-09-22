@@ -88,7 +88,8 @@ function parseCsvLines(csv: string): string[][] {
 
 export function parseCsvRecords(csv: string): Record<string, string | undefined>[] {
   const rows = parseCsvLines(csv);
-  const headers = rows.shift()?.map((header) => normalizeHeader(header.replace(/^\uFEFF/, ""))) ?? [];
+  const headers =
+    rows.shift()?.map((header) => normalizeHeader(header.replace(/^\uFEFF/, ""))) ?? [];
 
   return rows.map((row) => {
     const record: Record<string, string | undefined> = {};

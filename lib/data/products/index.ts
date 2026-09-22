@@ -6,7 +6,7 @@ import { radiadores } from "./radiadores";
 import { termostatos } from "./termostatos";
 import { accesorios } from "./accesorios";
 import { ventilacion } from "./ventilacion";
-import { repuestosGenericos } from "./repuestos_genericos";
+import { repuestos_genericos as repuestosGenericos } from "./repuestos_genericos";
 
 export { calderas } from "./calderas";
 export { calderas_de_outlets } from "./calderas_de_outlets";
@@ -15,7 +15,7 @@ export { radiadores } from "./radiadores";
 export { termostatos } from "./termostatos";
 export { accesorios } from "./accesorios";
 export { ventilacion } from "./ventilacion";
-export { repuestosGenericos } from "./repuestos_genericos";
+export { repuestos_genericos as repuestosGenericos } from "./repuestos_genericos";
 
 export const products: Product[] = [
   ...calderas,

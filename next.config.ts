@@ -84,6 +84,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "airfeel.cl",
       },
+      {
+        protocol: "https",
+        hostname: "peisa.com.ar",
+      },
     ],
   },
 };
