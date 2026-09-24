@@ -4,6 +4,7 @@ import { ProductDetail } from "@/components/productos/ProductDetail";
 import Link from "next/link";
 import { Metadata } from "next";
 import { formatCurrency } from "@/utils/formatMoney";
+import { getProductImage } from "@/utils/productImage";
 
 interface ProductPageProps {
   params: Promise<{
@@ -96,7 +97,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <div className="cursor-pointer overflow-hidden rounded-lg bg-white shadow transition hover:shadow-lg">
                     <div className="relative h-40 w-full bg-white">
                       <img
-                        src={relatedProduct.image}
+                        src={getProductImage(relatedProduct.image)}
                         alt={relatedProduct.name}
                         className="h-full w-full object-contain transition-transform hover:scale-105"
                       />

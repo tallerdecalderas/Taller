@@ -12,9 +12,9 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/tubo-coaxial1-97830a94ce5ef8057c16884964219566-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-001",
-    stock: 5,
+   
     tags: ["caldaia", "coaxial", "60/100", "tubo", "por metro"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -28,9 +28,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/terminal-antiviento-horizontal-coaxial-3a8ec6d7b0e1fb420d17818128650163-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-002",
-    stock: 3,
     tags: ["caldaia", "coaxial", "60/100", "terminal", "anti viento", "horizontal"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -44,9 +43,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/terminal-antiviento-vertical-coaxial-95243242a65db1f98717818131237189-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-003",
-    stock: 1,
     tags: ["caldaia", "coaxial", "60/100", "terminal", "anti viento", "vertical"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -60,9 +58,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/kit-salida-vertical1-eba67a65997636f29416884959711862-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-004",
-    stock: 2,
     tags: ["caldaia", "coaxial", "60/100", "kit", "salida vertical", "brida"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -76,9 +73,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/kit-codo-90-brida-b76a4a47e8a2e2fd0517861171968989-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-005",
-    stock: 2,
     tags: ["caldaia", "coaxial", "60/100", "kit", "codo 90", "brida"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -92,9 +88,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/kit-codo-90-adc3b697110f2fd1b317861168853848-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-006",
-    stock: 2,
     tags: ["caldaia", "coaxial", "60/100", "kit", "codo 90", "sin brida"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -108,9 +103,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/kit-codo-45-085d827b053965fd8a17861173845660-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-007",
-    stock: 2,
     tags: ["caldaia", "coaxial", "60/100", "kit", "codo 45", "sin brida"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -125,9 +119,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/kit-salida-humos1-ba062ebba418a0aec016884957365513-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-008",
-    stock: 1,
     tags: ["caldaia", "coaxial", "60/100", "kit", "humos", "tiro balanceado forzado"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -141,9 +134,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/cubre-muro-caldera-8b1e6c1aa10799752b17216622424061-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-009",
-    stock: 9,
     tags: ["coaxial", "100 mm", "cubre muro", "goma"],
     specs: { ventilationType: "coaxial", diameterMm: "100" },
   },
@@ -157,9 +149,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/1kwma08u-a5407417131f838b0417429302962283-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-010",
-    stock: 3,
     tags: ["coaxial", "100 mm", "abrazadera", "guarnición"],
     specs: { ventilationType: "coaxial", diameterMm: "100" },
   },
@@ -172,9 +163,9 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/triangulo1-982bf087ffc458590b16884966141433-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-011",
-    stock: 5,
+   
     tags: ["coaxial", "60/100", "centrador", "separador"],
     specs: { ventilationType: "coaxial", diameterMm: "60/100" },
   },
@@ -189,9 +180,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/cupla-60-2-cb06eda70d8adb903317818114079751-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-012",
-    stock: 53,
     tags: ["aluminio", "60 mm", "cupla", "hembra-hembra"],
     specs: { diameterMm: "60", connection: "Hembra-Hembra" },
   },
@@ -204,9 +194,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/cupla-80-f41fe4e4f5e89d2aa917861169801121-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-013",
-    stock: 3,
     tags: ["aluminio", "80 mm", "cupla", "hembra-hembra"],
     specs: { diameterMm: "80", connection: "Hembra-Hembra" },
   },
@@ -220,9 +209,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/curva-90-80-b4d0b954587dd9796e17861175666754-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-014",
-    stock: 4,
     tags: ["caldaia", "aluminio", "80 mm", "curva 90", "hembra-hembra", "blanca"],
     specs: { diameterMm: "80", connection: "Hembra-Hembra" },
   },
@@ -236,9 +224,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/tubo-aluminio1-6c4d430a046bd29ccc16884965258195-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-015",
-    stock: 2,
     tags: ["caldaia", "aluminio", "80 mm", "tubo", "por metro"],
     specs: { diameterMm: "80" },
   },
@@ -252,9 +239,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/terminal-antiviento-horizontal-80-ceb17cb407eebebd0e17818127932976-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-016",
-    stock: 3,
     tags: ["caldaia", "aluminio", "80 mm", "terminal", "anti viento", "horizontal", "acero inoxidable"],
     specs: { diameterMm: "80" },
   },
@@ -268,9 +254,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/terminal-antiviento-vertical-80-caldaia-dfea622d4206c4f04d17818131661619-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-017",
-    stock: 3,
     tags: ["caldaia", "aluminio", "80 mm", "terminal", "anti viento", "vertical"],
     specs: { diameterMm: "80" },
   },
@@ -284,9 +269,8 @@ const rawVentilacion: ProductInput[] = [
     category: "ventilacion",
     image:
       "https://acdn-us.mitiendanube.com/stores/003/365/635/products/vertical-801-edbac48b49e1e574e716884961152627-640-0.webp",
-    available: true,
+
     code: "CLG-VENT-018",
-    stock: 2,
     tags: ["caldaia", "aluminio", "80 mm", "kit", "salida vertical"],
     specs: { diameterMm: "80" },
   },

@@ -6,7 +6,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { ProductCard } from "@/components/productos/ProductCard";
 import { SearchBar } from "@/components/productos/SearchBar";
 import { FilterPanel } from "@/components/productos/FilterPanel";
+import { ProductPagination } from "@/components/productos/ProductPagination";
 import type { Product, ProductBrand, ProductCategory, ProductFilters } from "@/types/product";
+import { config } from "@/utils/config";
 
 interface ProductsCatalogProps {
   products: Product[];
@@ -53,11 +55,24 @@ export function ProductsCatalog({ products }: ProductsCatalogProps) {
     [searchParams],
   );
   const filteredProducts = useMemo(() => filterProducts(products, filters), [products, filters]);
+  const requestedPage = Number.parseInt(searchParams.get("page") || "1", 10);
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts.length / config.pagination.itemsPerPage),
+  );
+  const currentPage = Number.isFinite(requestedPage)
+    ? Math.min(Math.max(requestedPage, 1), totalPages)
+    : 1;
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * config.pagination.itemsPerPage,
+    currentPage * config.pagination.itemsPerPage,
+  );
 
   const updateFilter = (key: "search" | "category" | "brand", value?: string) => {
     const params = new URLSearchParams(searchParams.toString());
     if (value) params.set(key, value);
     else params.delete(key);
+    params.delete("page");
     const query = params.toString();
     router.push(query ? `/productos?${query}` : "/productos");
   };
@@ -137,7 +152,7 @@ export function ProductsCatalog({ products }: ProductsCatalogProps) {
               </div>
               {filteredProducts.length > 0 ? (
                 <div className="grid grid-cols-2 items-start gap-3 sm:gap-6 lg:grid-cols-3">
-                  {filteredProducts.map((product) => (
+                  {paginatedProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
                 </div>
@@ -155,6 +170,11 @@ export function ProductsCatalog({ products }: ProductsCatalogProps) {
                   </button>
                 </div>
               )}
+              <ProductPagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                query={searchParams.toString()}
+              />
             </div>
           </div>
         </div>

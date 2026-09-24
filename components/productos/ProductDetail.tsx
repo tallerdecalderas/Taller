@@ -8,6 +8,7 @@ import { QueryAddedModal } from "../shared/QueryAddedModal";
 import { config } from "@/utils/config";
 import { useCart } from "@/context/CartContext";
 import { formatCurrency } from "@/utils/formatMoney";
+import { getProductImage } from "@/utils/productImage";
 
 interface ProductDetailProps {
   product: Product;
@@ -39,7 +40,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <div className="flex flex-col">
           <div className="relative mb-4 h-96 w-full overflow-hidden rounded-lg bg-white">
             <Image
-              src={product.image}
+              src={getProductImage(product.image)}
               alt={product.name}
               fill
               className="object-contain p-4"
@@ -57,7 +58,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
                   className="h-20 w-20 cursor-pointer rounded bg-white hover:ring-2 hover:ring-blue-500"
                 >
                   <Image
-                    src={img}
+                    src={getProductImage(img)}
                     alt={`${product.name} - Imagen ${idx + 1}`}
                     width={80}
                     height={80}

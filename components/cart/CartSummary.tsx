@@ -3,6 +3,7 @@
 import { CartItem } from "@/types/product";
 import Link from "next/link";
 import { formatCurrency } from "@/utils/formatMoney";
+import { getProductImage } from "@/utils/productImage";
 
 interface CartSummaryProps {
   items: CartItem[];
@@ -56,7 +57,7 @@ export function CartSummary({
             {/* Imagen */}
             <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded bg-white">
               <img
-                src={item.product.image}
+                src={getProductImage(item.product.image)}
                 alt={item.product.name}
                 className="h-full w-full object-contain p-1"
               />

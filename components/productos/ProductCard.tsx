@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Product } from "@/types/product";
 import { useCart } from "@/context/CartContext";
 import { formatCurrency } from "@/utils/formatMoney";
+import { getProductImage } from "@/utils/productImage";
 
 interface ProductCardProps {
   product: Product;
@@ -31,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Imagen del producto */}
         <div className="relative h-48 w-full overflow-hidden bg-white">
           <Image
-            src={product.image}
+            src={getProductImage(product.image)}
             alt={product.name}
             fill
             className="object-contain p-3 transition-transform duration-300 hover:scale-[1.02]"

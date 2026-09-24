@@ -11,7 +11,7 @@ const rawCalderas: ProductInput[] = [
     brand: "ARISTON",
     category: "calderas",
     price: 2190000,
-    image: "https://www.climatecnica.com/",
+    image: "https://ariston.kleecks-cdn.com/imgix/pub/media/catalog/product/h/s/hsx_front.jpg?trim=auto&trimmd=0",
     tags: ["Caldera", "Outlet", "ARISTON", "Tiro Forzado", "Doble Servicio"],
     featured: false,
     specs: {
@@ -125,7 +125,7 @@ const rawCalderas: ProductInput[] = [
     price: 0, // TODO: precio no publicado, completar con lista del distribuidor
     brand: "PEISA",
     category: "calderas",
-    image: "https://peisa.com.ar/files/productos//gSHtbEHItaRa3jCO7iby6QaSFYGuHRSmySSQiuwI.png",
+    image: "https://abelson.com.ar/15499-home_default/peisa-summa-condensacion-24-kw-tf-gn-gl-10001493.jpg",
     tags: [
       "hogareña",
       "mural",
@@ -152,6 +152,7 @@ const rawCalderas: ProductInput[] = [
     shortDescription: "Caldera de pie de media potencia, de 58.000 a 120.000 Kcal/h",
     description:
       "Caldera de pie de media potencia para sistemas centrales de calefacción y agua caliente, con capacidades que van de 58.000 a 120.000 Kcal/h según el modelo. Es la única de su categoría con cuerpo de fundición, lo que le da mayor durabilidad y caudal, y se entrega lista para instalar con el quemador incluido. Funciona con cualquier tipo de gas, trabaja a tiro natural, alcanza un rendimiento del 90%, cuenta con detector de anomalías de tiraje y es apta para instalarse en batería.",
+    price: 0,
     brand: "PEISA",
     category: "calderas",
     image: "https://peisa.nyc3.digitaloceanspaces.com/media/214/caldera-xp_galeria-14.png",

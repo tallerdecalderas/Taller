@@ -88,6 +88,18 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "peisa.com.ar",
       },
+      {
+        protocol: "https",
+        hostname: "ariston.kleecks-cdn.com",
+      },
+      {
+        protocol: "https",
+        hostname: "acdn-us.mitiendanube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "climatecnica.com",
+      },
     ],
   },
 };

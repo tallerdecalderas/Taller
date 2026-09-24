@@ -233,7 +233,7 @@ export function mapSheetRowToProduct(row: ProductSheetRow): Product | null {
     price,
     brand,
     category,
-    image: readField(row, "image") ?? "/placeholder-product.png",
+    image: readField(row, "image") || "/placeholder-product.svg",
     images: parseList(readField(row, "images"), ";"),
     tags: parseList(readField(row, "tags"), ","),
     featured: parseOptionalBoolean(readField(row, "featured")) ?? false,

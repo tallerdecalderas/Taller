@@ -12,7 +12,7 @@ export type ProductCategory =
   | "ventilacion"
   | "accesorios";
 
-export type ProductBrand = "BAXI" | "PEISA" | "GENÉRICO" | "ARISTON" | "ASUA";
+export type ProductBrand = "BAXI" | "PEISA" | "GENÉRICO" | "ARISTON" | "ASUA" | "CALDAIA" | "OTROS";
 
 export type GasType = "GN" | "GL" | "GN/GL";
 
@@ -51,7 +51,7 @@ export interface Product {
   description: string;
   shortDescription?: string;
 
-  price?: number;
+  price: number;
 
   brand: ProductBrand;
   category: ProductCategory;
