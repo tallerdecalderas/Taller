@@ -79,13 +79,11 @@ export function mapGoogleSheetRowToProduct(row: GoogleSheetRow): Product | null 
     price: normalizedPrice,
     brand,
     category,
-    image: row.image?.trim() || "/placeholder-product.png",
+    image: row.image?.trim() || "/placeholder-product.svg",
     images: row.images
       ?.split(";")
       .map((item) => item.trim())
       .filter(Boolean),
-    available: row.available?.trim().toLowerCase() === "true",
-    stock: parseOptionalNumber(row.stock),
     tags: parseCommaSeparatedValues(row.tags),
     featured: row.featured?.trim().toLowerCase() === "true",
     specs,

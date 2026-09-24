@@ -9,7 +9,7 @@
  * En producción se resuelve una sola vez, en build.
  */
 
-import { parseCsvRecords } from "./csv";
+import { parseCsvRecords } from "@/lib/products/csv";
 import type { ProductSheetRow } from "./product-row-mapper";
 
 const SHEET_BASE_URL = "https://docs.google.com/spreadsheets/d";
@@ -26,6 +26,11 @@ function readEnv(key: string): string | undefined {
   return trimmed === "" ? undefined : trimmed;
 }
 
+function normalizeSheetId(value: string): string {
+  const match = value.match(/\/spreadsheets\/d\/([^/]+)/);
+  return match?.[1] ?? value;
+}
+
 export function isPublicSheetConfigured(): boolean {
   return Boolean(readEnv("PUBLIC_SHEET_CSV_URL") ?? readEnv("PUBLIC_SHEET_ID"));
 }
@@ -37,11 +42,13 @@ export function buildPublicSheetCsvUrl(): string | undefined {
     return override;
   }
 
-  const sheetId = readEnv("PUBLIC_SHEET_ID");
+  const rawSheetId = readEnv("PUBLIC_SHEET_ID");
 
-  if (!sheetId) {
+  if (!rawSheetId) {
     return undefined;
   }
+
+  const sheetId = normalizeSheetId(rawSheetId);
 
   const gid = readEnv("PUBLIC_SHEET_GID");
   const sheetName = readEnv("PUBLIC_SHEET_NAME");
@@ -61,7 +68,9 @@ export async function fetchPublicSheetRows(): Promise<ProductSheetRow[]> {
   const url = buildPublicSheetCsvUrl();
 
   if (!url) {
-    throw new Error("No hay una hoja pública configurada (PUBLIC_SHEET_ID o PUBLIC_SHEET_CSV_URL).");
+    throw new Error(
+      "No hay una hoja pública configurada (PUBLIC_SHEET_ID o PUBLIC_SHEET_CSV_URL).",
+    );
   }
 
   const isProduction = process.env.NODE_ENV === "production";
@@ -85,9 +94,7 @@ export async function fetchPublicSheetRows(): Promise<ProductSheetRow[]> {
     const contentType = response.headers.get("content-type") ?? "";
 
     if (contentType.includes("text/html")) {
-      throw new Error(
-        "La hoja no es pública. Compartila como 'Cualquiera con el enlace: Lector'.",
-      );
+      throw new Error("La hoja no es pública. Compartila como 'Cualquiera con el enlace: Lector'.");
     }
 
     const csv = await response.text();

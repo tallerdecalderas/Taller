@@ -4,9 +4,8 @@
  */
 
 import type { Product, ProductBrand, ProductCategory, ProductFilters } from "@/types/product";
-import type { ProductRepository } from "./product-repository";
 import { StaticProductRepository } from "./static-product-repository";
-import { GoogleSheetsProductRepository } from "./google-sheets-repository";
+import { PublicSheetProductRepository } from "./public-sheet-repository";
 
 function getEnvValue(key: string, fallback = ""): string {
   if (typeof process === "undefined" || !process.env) {
@@ -16,11 +15,11 @@ function getEnvValue(key: string, fallback = ""): string {
   return process.env[key] ?? fallback;
 }
 
-function resolveRepository(): ProductRepository {
+function resolveRepository(): StaticProductRepository | PublicSheetProductRepository {
   const source = (getEnvValue("PRODUCT_DATA_SOURCE", "static") || "static").trim().toLowerCase();
 
-  if (source === "google-sheets") {
-    return new GoogleSheetsProductRepository();
+  if (source === "public-sheet") {
+    return new PublicSheetProductRepository();
   }
 
   return new StaticProductRepository();
@@ -28,43 +27,37 @@ function resolveRepository(): ProductRepository {
 
 const repository = resolveRepository();
 
-export function getProducts(): Product[] {
+export async function getProducts(): Promise<Product[]> {
   return repository.getProducts();
 }
 
-export function getProductById(id: string): Product | undefined {
-  return repository.getProductById(id);
+export async function getProductById(id: string): Promise<Product | undefined> {
+  return (await getProducts()).find((product) => product.id === id);
 }
 
-export function getProductsByCategory(category: ProductCategory): Product[] {
-  return (
-    repository.getProductsByCategory?.(category) ??
-    getProducts().filter((product) => product.category === category)
-  );
+export async function getProductsByCategory(category: ProductCategory): Promise<Product[]> {
+  return (await getProducts()).filter((product) => product.category === category);
 }
 
-export function getProductsByBrand(brand: ProductBrand): Product[] {
-  return (
-    repository.getProductsByBrand?.(brand) ??
-    getProducts().filter((product) => product.brand === brand)
-  );
+export async function getProductsByBrand(brand: ProductBrand): Promise<Product[]> {
+  return (await getProducts()).filter((product) => product.brand === brand);
 }
 
-export function getFeaturedProducts(limit?: number): Product[] {
-  const featured = getProducts().filter((product) => product.featured);
+export async function getFeaturedProducts(limit?: number): Promise<Product[]> {
+  const featured = (await getProducts()).filter((product) => product.featured);
   return limit ? featured.slice(0, limit) : featured;
 }
 
-export function getAllCategories(): ProductCategory[] {
-  return Array.from(new Set(getProducts().map((product) => product.category)));
+export async function getAllCategories(): Promise<ProductCategory[]> {
+  return Array.from(new Set((await getProducts()).map((product) => product.category)));
 }
 
-export function getAllBrands(): ProductBrand[] {
-  return Array.from(new Set(getProducts().map((product) => product.brand)));
+export async function getAllBrands(): Promise<ProductBrand[]> {
+  return Array.from(new Set((await getProducts()).map((product) => product.brand)));
 }
 
-export function filterProducts(filters: ProductFilters): Product[] {
-  return getProducts().filter((product) => {
+export async function filterProducts(filters: ProductFilters): Promise<Product[]> {
+  return (await getProducts()).filter((product) => {
     if (filters.category && product.category !== filters.category) {
       return false;
     }
@@ -113,18 +106,10 @@ export function filterProducts(filters: ProductFilters): Product[] {
   });
 }
 
-export function searchProducts(query: string): Product[] {
+export async function searchProducts(query: string): Promise<Product[]> {
   return filterProducts({ search: query });
 }
 
-export function getProductCount(): number {
-  return getProducts().length;
-}
-
-export function getAvailableProducts(): Product[] {
-  return getProducts().filter((product) => product.available);
-}
-
-export function getUnavailableProducts(): Product[] {
-  return getProducts().filter((product) => !product.available);
+export async function getProductCount(): Promise<number> {
+  return (await getProducts()).length;
 }

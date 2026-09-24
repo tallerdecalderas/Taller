@@ -1,8 +1,7 @@
 import type { Product } from "@/types/product";
-
-export const repuestosGenericos: Product[] = [
+import type { ProductInput } from "@/types/product";
+const rawRepuestosGenericos: ProductInput[] = [
   {
-    id: "9",
     code: "REP-VASO-EXP-8L",
     name: "Vaso de expansión 8 litros",
     description:
@@ -11,8 +10,6 @@ export const repuestosGenericos: Product[] = [
     brand: "GENÉRICO",
     category: "repuestos_genericos",
     price: 95000,
-    stock: 8,
-    available: true,
     image:
       "https://pub-877ef76587e44bd1b01fb2b3b725282b.r2.dev/productos/299.93.0066/wm_removed_5472b779.jpg",
     tags: ["Vaso de expansión", "8 litros", "Calderas", "Calefacción"],
@@ -21,7 +18,6 @@ export const repuestosGenericos: Product[] = [
     },
   },
   {
-    id: "10",
     code: "REP-FLUJOSTATO-UNI",
     name: "Flujostato universal para caldera",
     description:
@@ -30,8 +26,6 @@ export const repuestosGenericos: Product[] = [
     brand: "GENÉRICO",
     category: "repuestos_genericos",
     price: 49000,
-    stock: 15,
-    available: true,
     image:
       "https://s.alicdn.com/%40sc04/kf/H1d629388ca764d4d9cf0d2298be494d0B/Ferroli-Beretta-Immergas-Gas-Boilers-Spare-Parts-Plastic-Water-Flow-Sensor-Switch-Pressure-Relief-Port-Replacement-for-Water.png",
     tags: ["Flujostato", "Universal", "ACS"],
@@ -40,3 +34,8 @@ export const repuestosGenericos: Product[] = [
     },
   },
 ];
+
+export const repuestos_genericos: Product[] = rawRepuestosGenericos.map((p, i) => ({
+  id: `${p.category}-${i}`,
+  ...p,
+}));

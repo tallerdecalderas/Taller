@@ -10,7 +10,7 @@
 
 import { brands } from "@/lib/data/brands";
 import { categories } from "@/lib/data/categories";
-import { normalizeHeader } from "./csv";
+import { normalizeHeader } from "@/lib/products/csv";
 import type {
   GasType,
   Product,
@@ -233,10 +233,8 @@ export function mapSheetRowToProduct(row: ProductSheetRow): Product | null {
     price,
     brand,
     category,
-    image: readField(row, "image") ?? "/placeholder-product.png",
+    image: readField(row, "image") || "/placeholder-product.svg",
     images: parseList(readField(row, "images"), ";"),
-    available: parseOptionalBoolean(readField(row, "available")) ?? false,
-    stock: parseNumberValue(readField(row, "stock")),
     tags: parseList(readField(row, "tags"), ","),
     featured: parseOptionalBoolean(readField(row, "featured")) ?? false,
     specs: buildSpecs(row),

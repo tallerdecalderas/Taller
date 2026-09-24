@@ -45,10 +45,7 @@ export function WhatsAppButton({
     <>
       <button
         onClick={handleClick}
-        disabled={!product.available}
-        className={`flex items-center justify-center gap-2 ${
-          variantClasses[variant]
-        } ${sizeClasses[size]} ${!product.available ? "cursor-not-allowed opacity-50" : ""}`}
+        className={`flex items-center justify-center gap-2 ${variantClasses[variant]} ${sizeClasses[size]}`}
       >
         <svg
           className="h-5 w-5"
@@ -83,7 +80,7 @@ export function WhatsAppDirectButton({
   const handleClick = () => {
     const message = generateSingleProductMessage(
       product.name,
-      product.code,
+      product.code ?? "",
       product.price,
       quantity,
     );
@@ -105,10 +102,7 @@ export function WhatsAppDirectButton({
   return (
     <button
       onClick={handleClick}
-      disabled={!product.available}
-      className={`flex items-center justify-center gap-2 ${
-        variantClasses[variant]
-      } ${sizeClasses[size]} ${!product.available ? "cursor-not-allowed opacity-50" : ""}`}
+      className={`flex items-center justify-center gap-2 ${variantClasses[variant]} ${sizeClasses[size]}`}
     >
       <span>Consultar por WhatsApp</span>
     </button>

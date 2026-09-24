@@ -3,6 +3,7 @@ import { config } from "@/utils/config";
 import { getFeaturedProducts } from "@/lib/products/product-service";
 import { categories } from "@/lib/data/categories";
 import { formatCurrency } from "@/utils/formatMoney";
+import { getProductImage } from "@/utils/productImage";
 
 function CategoryIcon({ type }: { type: string }) {
   const commonProps = {
@@ -231,8 +232,11 @@ export default async function Home() {
               <article className="product-card">
                 <div className="product-image-wrap">
                   <picture>
-                    <img src={product.image} alt={product.name} className="product-image" />
-                    {!product.available && <div className="product-badge">Agotado</div>}
+                    <img
+                      src={getProductImage(product.image)}
+                      alt={product.name}
+                      className="product-image"
+                    />
                   </picture>
                 </div>
                 <div className="product-body">
@@ -241,9 +245,6 @@ export default async function Home() {
                   {product.shortDescription && <p>{product.shortDescription}</p>}
                   <div className="product-meta">
                     <span className="price">{formatCurrency(product.price)}</span>
-                    <span className={product.available ? "status ok" : "status bad"}>
-                      {product.available ? "Disponible" : "Agotado"}
-                    </span>
                   </div>
                 </div>
               </article>
